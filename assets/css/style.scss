@@ -1,0 +1,18 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+#menu_label {
+    color: #fff;
+    background: none;
+}
+
+/* Je sélectionne les <li> du menu horizontal */
+ul#menu_horizontal li { 
+    list-style-type : none; /* Car sinon les puces se placent n'importe où */
+    display : inline-block;
+    background: #0090ff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding : 0 0.5em; /* Pour espacer les boutons entre eux */
+}

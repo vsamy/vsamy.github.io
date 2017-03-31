@@ -21,6 +21,9 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  vsamy
 
+paginate: 3                   # le nombre d'articles à afficher par page
+paginate_path: /blog/page:num # l'url générée pour la pagination
+
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-slate

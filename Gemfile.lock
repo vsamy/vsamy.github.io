@@ -195,6 +195,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  jekyll-paginate
   jekyll-theme-slate
 
 BUNDLED WITH
