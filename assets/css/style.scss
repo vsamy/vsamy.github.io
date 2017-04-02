@@ -3,16 +3,34 @@
 
 @import "{{ site.theme }}";
 
-#menu_label {
-    color: #fff;
-    background: none;
+#header_wrap .inner {
+  padding: 0px 10px 10px 10px;
 }
 
-/* Je sélectionne les <li> du menu horizontal */
-ul#menu_horizontal li { 
-    list-style-type : none; /* Car sinon les puces se placent n'importe où */
-    display : inline-block;
-    background: #0090ff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    padding : 0 0.5em; /* Pour espacer les boutons entre eux */
+#menu { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-weight: 700;
+    
+}
+
+#menu li {
+    float: left;    
+}
+
+#menu li a {
+    display: block;
+    padding: 8px;  
+    text-align: center;
+    background-color: #0090ff;
+    color: #fff;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+#menu li a:hover {
+    background-color: #fff;
+    color: #0090ff;
 }
