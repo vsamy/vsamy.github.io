@@ -1,6 +1,5 @@
 <ul id="menu">
-    <li><a href="{{site.url}}/">index</a></li>
-    <li><a href="{{site.url}}/about/">A propos</a></li>
-    <li><a href="{{site.url}}/blog/">Blog</a></li>
-    <li><a href="{{site.url}}/libs/">Libs</a></li>
+    {% for menu in site.menu-lang[page.lang] %}
+        <li><a href="{{menu[1].url}}">{{menu[1].name}}</a></li>
+    {% endfor %}
 </ul>

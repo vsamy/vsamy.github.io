@@ -8,6 +8,7 @@
   <meta name="description" content="{{ site.title | default: site.github.repository_name }} : {{ site.description | default: site.github.project_tagline }}">
 
   <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css">
 
   <title>{{ site.title | default: site.github.repository_name }}</title>
 </head>
@@ -26,7 +27,6 @@
   <!-- MAIN CONTENT -->
   <div id="main_content_wrap" class="outer">
     <section id="main_content" class="inner">
-      <h1>{{ page.title }}</h1>
       {{ content }}
     </section>
   </div>
@@ -37,7 +37,12 @@
       {% if site.github.is_project_page %}
       <p class="copyright">{{ site.title | default: site.github.repository_name }} maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
       {% endif %}
-      <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      <ul id="footer_info">
+        <li style="float:left">Published with <a href="https://pages.github.com">GitHub Pages</a></li>
+        <li> <a href={{site.url}}/{{page.ref}}/fr class="flag-icon flag-icon-fr"></a></li>
+        <li> <a href={{site.url}}/{{page.ref}}/en class="flag-icon flag-icon-gb"></a></li>
+      </ul>
+      {% include footer.html %}
     </footer>
   </div>
 

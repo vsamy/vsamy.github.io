@@ -13,7 +13,6 @@
     padding: 0;
     overflow: hidden;
     font-weight: 700;
-    
 }
 
 #menu li {
@@ -33,4 +32,15 @@
 #menu li a:hover {
     background-color: #fff;
     color: #0090ff;
+}
+
+#footer_info {
+    list-style-type: none;
+    color: #fff;
+    overflow: hidden;
+}
+
+#footer_info li {
+    float: right;
+    padding: 2px;
 }

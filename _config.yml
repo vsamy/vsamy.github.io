@@ -28,7 +28,37 @@ paginate_path: /blog/page:num # l'url générée pour la pagination
 markdown: kramdown
 theme: jekyll-theme-slate
 gems:
+  - github-pages
   - jekyll-feed
+  - jekyll-redirect-from
 exclude:
   - Gemfile
   - Gemfile.lock
+
+menu-lang:
+  en:
+    home:
+      name: Home
+      url: "/home/en/"
+    about:
+      name: About
+      url: "/about/"
+    blog:
+      name: Blog
+      url: "/blog/"
+    libs:
+      name: Git libs
+      url: "/libs/"
+  fr:
+    home:
+      name: Accueil
+      url: "/home/fr/"
+    about:
+      name: À propos
+      url: "/about/"
+    blog:
+      name: Blog
+      url: "/blog/"
+    libs:
+      name: Git libs
+      url: "/libs/"
