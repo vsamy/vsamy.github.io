@@ -64,3 +64,16 @@ menu-lang:
     libs:
       name: Git libs
       url: "bibs/"
+  jp:
+    home:
+      name: ホーム
+      url: "ホーム/"
+    about:
+      name: 私について
+      url: "私について/"
+    blog:
+      name: 記事
+      url: "記事/"
+    libs:
+      name: ギットライブラリー
+      url: "ギットライブラリー/"
