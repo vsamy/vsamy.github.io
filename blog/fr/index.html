@@ -1,0 +1,20 @@
+---
+layout: default
+lang: fr
+---
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Mon blog</h1>
+        {% for post in paginator.posts %}
+            <div>
+                <h3>{{ post.title }} <small>{{post.date | date_to_string }}</small></h3>
+                <p>{{post.excerpt}}</p>
+                <p><a href="{{site.url}}{{post.url}}" class="btn btn-default">Lire plus</a></p>
+            </div>
+            <hr>
+        {% endfor %}
+
+        {% include pagination.html %}
+    </div>
+</div>
