@@ -8,6 +8,8 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
+include: ["_pages"]
+
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
@@ -39,26 +41,26 @@ menu-lang:
   en:
     home:
       name: Home
-      url: "/home/en/"
+      url: "home/"
     about:
       name: About
-      url: "/about/"
+      url: "about/"
     blog:
-      name: Blog
-      url: "/blog/"
+      name: Papers
+      url: "papers/"
     libs:
       name: Git libs
-      url: "/libs/"
+      url: "libs/"
   fr:
     home:
       name: Accueil
-      url: "/home/fr/"
+      url: "accueil/"
     about:
       name: À propos
-      url: "/about/"
+      url: "a-propos/"
     blog:
-      name: Blog
-      url: "/blog/"
+      name: Articles
+      url: "articles/"
     libs:
       name: Git libs
-      url: "/libs/"
+      url: "bibs/"

@@ -39,8 +39,8 @@
       {% endif %}
       <ul id="footer_info">
         <li style="float:left">Published with <a href="https://pages.github.com">GitHub Pages</a></li>
-        <li> <a href={{site.url}}/{{page.ref}}/fr><i class="flag-icon flag-icon-fr"></i></a></li>
-        <li> <a href={{site.url}}/{{page.ref}}/en><i class="flag-icon flag-icon-gb"></i></a></li>
+        <li> <a href={{site.url}}/{{site.menu-lang["fr"][page.ref].url}}><i class="flag-icon flag-icon-fr"></i></a></li>
+        <li> <a href={{site.url}}/{{site.menu-lang["en"][page.ref].url}}><i class="flag-icon flag-icon-gb"></i></a></li>
       </ul>
       {% include footer.html %}
     </footer>
