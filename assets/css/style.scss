@@ -3,6 +3,23 @@
 
 @import "{{ site.theme }}";
 
+
+// Redifing sup and sub properly 
+sup, sub {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
 #header_wrap .inner {
   padding: 0px 10px 10px 10px;
 }
@@ -43,4 +60,22 @@
 #footer_info li {
     float: right;
     padding: 2px;
+}
+
+.container {
+    overflow: hidden;
+}
+
+.post {
+    float: left;
+    text-align: justify;
+    width: 550px;
+}
+
+.navbar {
+    float: right;
+}
+
+.navbar ul {
+    list-style-type: none;
 }

@@ -22,9 +22,7 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  vsamy
-
-paginate: 3                   # le nombre d'articles à afficher par page
-paginate_path: /blog/page:num # l'url générée pour la pagination
+excerpt_separator: <!--more-->
 
 # Build settings
 markdown: kramdown
@@ -33,6 +31,7 @@ gems:
   - github-pages
   - jekyll-feed
   - jekyll-redirect-from
+  - jekyll-paginate
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -48,9 +47,9 @@ menu-lang:
     blog:
       name: Papers
       url: "papers/"
-    libs:
-      name: Git libs
-      url: "libs/"
+    repo:
+      name: Git repository
+      url: "git-repository/"
   fr:
     home:
       name: Accueil
@@ -61,9 +60,9 @@ menu-lang:
     blog:
       name: Articles
       url: "articles/"
-    libs:
-      name: Git libs
-      url: "bibs/"
+    repo:
+      name: Dépôt git
+      url: "dépôt-git/"
   jp:
     home:
       name: ホーム
@@ -74,6 +73,6 @@ menu-lang:
     blog:
       name: 記事
       url: "記事/"
-    libs:
-      name: ギットライブラリー
-      url: "ギットライブラリー/"
+    repo:
+      name: ギット・リポジトリ
+      url: "ギット・リポジトリ/"
