@@ -20,6 +20,11 @@ sub {
     bottom: -0.25em;
 }
 
+// Overridde ul style
+ul {
+    list-style: none;
+}
+
 #header_wrap .inner {
   padding: 0px 10px 10px 10px;
 }

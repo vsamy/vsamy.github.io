@@ -199,7 +199,6 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  jekyll-paginate
   jekyll-redirect-from
   jekyll-theme-slate
 
