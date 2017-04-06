@@ -1,0 +1,15 @@
+tab1:
+  header: hn1
+  content:
+    c1:
+      date: d1
+      text: I am cr1
+    c2:
+      date: d2
+      text: I am cr2
+tab2:
+  header: hn3
+  content:
+    c1:
+      date: d3
+      text: I am cr3

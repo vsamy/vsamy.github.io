@@ -1,11 +1,11 @@
-{% assign sz=page.headers | size) %}
-
-{% for pos in (0..sz) %}
-    {% if pos == sz %} 
-        {% break %}
-    {% endif %}
-    <h2>{{ page.headers[pos] }} | {{ page.dates[pos] }}</h2>
-    {% for f in page.crefs %}
-        <p>{% include_relative {{f}} %} </p>
-    {% endfor %}
+{% for tab in site.data.cv[page.lang] %}
+    <table style="width:100%">
+        <th colspan="2">{{ tab[1].header }}</th>
+        {% for c in tab[1].content %}
+            <tr>
+                <td>{{ c[1].date }}</td>
+                <td>{{ c[1].text }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endfor %}
