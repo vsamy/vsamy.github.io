@@ -1,15 +1,58 @@
+tab0:
+  header: Current work
+  content:
+    - date: depuis 2014
+      title: Carapace haptique compliante pour robots humanoïdes et stratégies de chutes sécurisées en présence humaine
+      text: Thèse en robotique humanoïde dans la team IDH, Lirmm.
+
 tab1:
-  header: hn1
+  header: Publications
   content:
-    c1:
-      date: d1
-      text: Je suis cr1
-    c2:
-      date: d2
-      text: Je suis cr2
+    - date: 2017
+      title: QP-based Adaptive-Gains Compliance Control in Humanoid Falls
+      text: Soumis à la conférence ICRA de 2017
+      link: https://hal.archives-ouvertes.fr/hal-01365108v2/document
+    - date: 2015
+      title: Falls control using posture reshaping and active compliance
+      text: Soumis à la conférence humanoids de 2015
+      link: http://comanoid.cnrs.fr/publications_files/2015/Humanoids/T5OC-4.pdf
+    - date: 2014
+      title: Estimation sans modèle et identification paramétrique pour la commande dynamique de robots polyarticulés
+      text: Projet de fin d'études de l'ENSAM Paris effectué à l'ISIR.
+      link: https://www.researchgate.net/publication/315808938_Estimation_sans_modele_et_identification_parametrique_pour_la_commande_dynamique_de_robots_polyarticules
+    - date: 2013
+      title: Développement d’une interface hybride à retour de force à 2 degrés de liberté
+      text: Projet de fin d'études de l'INSA de Lyon effectué au CEA LIST.
+      link: https://www.researchgate.net/publication/278713768_Developpement_d%27une_interface_hybride_a_retour_de_force_a_2_degres_de_liberte
+
 tab2:
-  header: hn3
+  header: Expériences diverses
   content:
-    c1:
-      date: d3
-      text: Je suis cr3
+    - date: 2014
+      title: Stage de recherche (ISIR)
+      text: Identification et lois de commande de systèmes partiellement connus
+    - date: 2013
+      title: Stage de recherche (CEA LIST)
+      text: Interface à retour de force 2-DDL avec actionneurs hybrides
+    - date: 2012
+      title: Étude & recherche (département mécanique de l'université de Kobe, Japon)
+      text: Minimisation d’erreurs de mesure des capteurs de vitesse
+    - date: 2009
+      title: Stage ouvrier (SNR-NTN)
+      text: Packaging & contrôle de qualité pendant 1 mois
+
+tab3:
+  header: Formation
+  content:
+    - date: 2015 - 2017
+      title: Doctorat en robotique humanoïde (Lirmm)
+      text: Carapace haptique compliante pour robots humanoïdes et stratégies de chutes sécurisées en présence humaine
+    - date: 2013 - 2014
+      title: Master 2 en robotique (ENSAM Paris)
+      text: Master de Robotique « Systèmes Avancés et Robotique » en cohabilitation avec l’UPMC, l’ENSTA et l’ENS Cachan
+    - date: 2008 - 2013
+      title: Ingénieur « Génie Mécanique et Conception » (INSA Lyon)
+      text: Classes préparatoires intégrées – section « ASINSA » en relation avec l’Asie
+    - date: 2011 - 2012
+      title: Année d'échanges (神戸大学)
+      text: Année effectué au départment mécanique de l'école

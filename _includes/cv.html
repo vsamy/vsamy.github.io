@@ -1,11 +1,25 @@
 {% for tab in site.data.cv[page.lang] %}
     <table style="width:100%">
-        <th colspan="2">{{ tab[1].header }}</th>
+        <th colspan="2" class="cv_header">{{ tab[1].header }}</th>
         {% for c in tab[1].content %}
             <tr>
-                <td>{{ c[1].date }}</td>
-                <td>{{ c[1].text }}</td>
+                <td rowspan="2" class="cv_date_col">{{ c.date }}</td>
+                <td class="cv_title_col">
+                    {% if c.link == nil %}
+                        {{ c.title }}
+                    {% else %}
+                        <a href="{{ c.link }}">{{ c.title }}</a>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:left">
+                    {{ c.text }}
+                </td>
             </tr>
         {% endfor %}
     </table>
+    {% if forloop.last == false %}
+        <hr>
+    {% endif %}
 {% endfor %}

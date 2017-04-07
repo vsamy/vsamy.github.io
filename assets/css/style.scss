@@ -25,6 +25,23 @@ ul {
     list-style: none;
 }
 
+// Table for cv
+.cv_header {
+    text-align: center;
+}
+
+.cv_date_col {
+    width: 5%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cv_title_col {
+    border-bottom: 1px solid #ddd;
+    text-align: right;
+}
+
+
 #header_wrap .inner {
   padding: 0px 10px 10px 10px;
 }
