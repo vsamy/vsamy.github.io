@@ -1,50 +1,66 @@
 tab0:
-  header: Current work
+  header: Travail actuel
   content:
     - date: depuis 2014
       title: Carapace haptique compliante pour robots humanoïdes et stratégies de chutes sécurisées en présence humaine
-      text: Thèse en robotique humanoïde dans la team IDH, Lirmm.
+      text: > 
+              Thèse en robotique humanoïde dans la team IDH, Lirmm. 
+              Le travail cherche à diminuer les sur un robot humanoïde dans le cas d'une chute.
+              Il est effectué en deux temps. Le contrôle du robot pendant la chute (pour le préparer à l'impact), 
+              puis un contrôle adaptatif est effectué pour complier à l'impact.
 
 tab1:
-  header: Publications
+  header: Articles
   content:
     - date: 2017
       title: QP-based Adaptive-Gains Compliance Control in Humanoid Falls
-      text: Soumis à la conférence ICRA de 2017
+      text: >
+              Soumis à la conférence ICRA de 2017. Le travail propose une méthode de résolution de chutes complexes.
+              Le contrôle est valable dans un environnement encombré, avec tous types chutes (en avant, en arrière, latérales).
+              Un contrôle adaptif capable de modifier les gains des moteurs en ligne a été développé.
       link: https://hal.archives-ouvertes.fr/hal-01365108v2/document
     - date: 2015
       title: Falls control using posture reshaping and active compliance
-      text: Soumis à la conférence humanoids de 2015
+      text: >
+              Soumis à la conférence humanoids de 2015. 
+              Le travail présente une méthode simple de résolution de chutes avant et arrière et les conditions de non danger pour la structure du robot.
       link: http://comanoid.cnrs.fr/publications_files/2015/Humanoids/T5OC-4.pdf
     - date: 2014
       title: Estimation sans modèle et identification paramétrique pour la commande dynamique de robots polyarticulés
-      text: Projet de fin d'études de l'ENSAM Paris effectué à l'ISIR.
+      text: >
+              Projet de fin d'études de l'ENSAM Paris effectué à l'ISIR.
+              Le travail s'oriente sur le contrôle de système, en utilisant du contrôle sans modèle.
+              Une analyse est effectuée sur l'intérêt de l'association de la commande sans modèle et celle avec.
       link: https://www.researchgate.net/publication/315808938_Estimation_sans_modele_et_identification_parametrique_pour_la_commande_dynamique_de_robots_polyarticules
     - date: 2013
       title: Développement d’une interface hybride à retour de force à 2 degrés de liberté
-      text: Projet de fin d'études de l'INSA de Lyon effectué au CEA LIST.
+      text: >
+              Projet de fin d'études de l'INSA de Lyon effectué au CEA LIST.
+              Le travail s'évertue à analyser l'impact d'un actionneur hybride (frein + moteur) dans un système haptique.
       link: https://www.researchgate.net/publication/278713768_Developpement_d%27une_interface_hybride_a_retour_de_force_a_2_degres_de_liberte
 
 tab2:
   header: Expériences diverses
   content:
-    - date: 2014
-      title: Stage de recherche (ISIR)
-      text: Identification et lois de commande de systèmes partiellement connus
-    - date: 2013
-      title: Stage de recherche (CEA LIST)
-      text: Interface à retour de force 2-DDL avec actionneurs hybrides
     - date: 2012
       title: Étude & recherche (département mécanique de l'université de Kobe, Japon)
-      text: Minimisation d’erreurs de mesure des capteurs de vitesse
+      text: Un travail de recherche sur minimisation d’erreurs de mesure des capteurs de vitesse en plus des cours suivi à l'université.
+    - date: 2011
+      title: Responsable Technique et mise en scène
+      text: >
+              Mise ne place d'un spectacle de 2h pour l'association 'La semaine asiatique'.
+              Créations de saynètes. Mise en scène des différents shows.
+              Gestion lumières et sons.
     - date: 2009
       title: Stage ouvrier (SNR-NTN)
-      text: Packaging & contrôle de qualité pendant 1 mois
+      text: > 
+              Découverte du métier d'ouvrier à Iwata, préfecture de Shizuoka, Japon.
+              Packaging & contrôle de qualité pendant 1 mois. 
 
 tab3:
   header: Formation
   content:
-    - date: 2015 - 2017
+    - date: 2015 - aujourd'hui
       title: Doctorat en robotique humanoïde (Lirmm)
       text: Carapace haptique compliante pour robots humanoïdes et stratégies de chutes sécurisées en présence humaine
     - date: 2013 - 2014
@@ -52,7 +68,9 @@ tab3:
       text: Master de Robotique « Systèmes Avancés et Robotique » en cohabilitation avec l’UPMC, l’ENSTA et l’ENS Cachan
     - date: 2008 - 2013
       title: Ingénieur « Génie Mécanique et Conception » (INSA Lyon)
-      text: Classes préparatoires intégrées – section « ASINSA » en relation avec l’Asie
+      text: >
+              Département génie mécanique.
+              Classes préparatoires intégrées – section « ASINSA » en relation avec l’Asie
     - date: 2011 - 2012
       title: Année d'échanges (神戸大学)
-      text: Année effectué au départment mécanique de l'école
+      text: Année effectué au départment mécanique de l'université de Kobe

@@ -1,15 +1,63 @@
+tab0:
+  header: Current work
+  content:
+    - date: since 2014
+      title: Haptic covers for humanoid and safe human aware falling strategies
+      text: > 
+              PhD. thesis in humanoid robotics at the IDH team, Lirmm.
+              This work aims to reduce damages taken by humanoid robots when a fall occurs
+              This is done in two main steps. The robot is controlled during the fall (to prepare the impact), 
+              then an adaptive control is used to comply to the impact.
+
 tab1:
-  header: hn1
+  header: Publications
   content:
-    c1:
-      date: d1
-      text: I am cr1
-    c2:
-      date: d2
-      text: I am cr2
+    - date: 2017
+      title: QP-based Adaptive-Gains Compliance Control in Humanoid Falls
+      text: >
+              Submitted to the conference ICRA in 2017. This work gives a method for handling safe complex falls.
+              The control cqn hqndle a fall in a cluttered environment with front, back and side fall.
+              To comply to the impact an adaptive controller that can tune motor's gains has been developed.
+      link: https://hal.archives-ouvertes.fr/hal-01365108v2/document
+    - date: 2015
+      title: Falls control using posture reshaping and active compliance
+      text: >
+              Submitted to the conference humanoids in 2015.
+              The works gives a simple method that can handle front and back fall and the postures in which the robot should not be when impacting the ground.
+      link: http://comanoid.cnrs.fr/publications_files/2015/Humanoids/T5OC-4.pdf
+
 tab2:
-  header: hn3
+  header: Diverse experiences
   content:
-    c1:
-      date: d3
-      text: I am cr3
+    - date: 2012
+      title: Study & research (Mechanical department of Kobe university, Japan)
+      text: The work seeked to minimize measurment errors of velocity sensors.
+    - date: 2011
+      title: In charge of the technics and the mise-en-scène
+      text: >
+              Realization of a 2h spectacle for the association named 'La semaine asiatique'.
+              Creation of several comedy playlets. Assembling all the shows
+              In charge of lights and sounds.
+    - date: 2009
+      title: Internship as a worker (SNR-NTN)
+      text: > 
+              Learning the job of a worker at Iwata, Shizuoka prefecture, Japan.
+              Packaging & quality control for 1 month.
+
+tab3:
+  header: Education
+  content:
+    - date: 2015 - now
+      title: PhD. student in humanoid robotics (Lirmm)
+      text: Haptic covers for humanoid and safe human aware falling strategies
+    - date: 2013 - 2014
+      title: Master 2 in robotics (ENSAM Paris)
+      text: Master in robotics « Advanced Systems and Robotics » in cohabilitation with UPMC, ENSTA and ENS Cachan
+    - date: 2008 - 2013
+      title: Engineering degree « Design and Mechanical Engineering » (INSA Lyon)
+      text: > 
+              Mechanical & Design deparment.
+              Integrated preparatory class – section « ASINSA » which is linked with Asian culture.
+    - date: 2011 - 2012
+      title: Exchange year (神戸大学)
+      text: Done at the mechanical department of Kobe university.

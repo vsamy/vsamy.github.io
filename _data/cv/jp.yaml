@@ -1,15 +1,63 @@
+tab0:
+  header: 今の仕事
+  content: 
+    - date: 2014から
+      title: Haptic covers for humanoid and safe human aware falling strategies
+      text: > 
+              LIRMMのIDHチームでヒューマノイドロボットに関する博士論文準備者。
+              転んだ場合に、自分自身をうまく守る制御の開発。
+              二段階の制御。最初はロボットが転びつつインパクトの準備のための制御、
+              そして衝撃力を吸収するための適応制御
+
 tab1:
-  header: hn1
+  header: 記事
   content:
-    c1:
-      date: d1
-      text: 私はcr1
-    c2:
-      date: d2
-      text: 私はcr2
+    - date: 2017
+      title: QP-based Adaptive-Gains Compliance Control in Humanoid Falls
+      text: >
+              ２０１７のICRA会議に入力。安全複雑転びの制御。
+              前と後ろと側面とも、混雑環境芸術での制御。
+              モーターゲイン調整と衝撃力を満たすための適応制御の開発。
+      link: https://hal.archives-ouvertes.fr/hal-01365108v2/document
+    - date: 2015
+      title: Falls control using posture reshaping and active compliance
+      text: >
+              ２０１５のhumanoids会議に入力。
+              前と後ろの転びを安全にするための単な制御、そして、転ばないほうが良い姿勢の指示。
+      link: http://comanoid.cnrs.fr/publications_files/2015/Humanoids/T5OC-4.pdf
+
 tab2:
-  header: hn3
+  header: 各種の経験
   content:
-    c1:
-      date: d3
-      text: 私はcr3
+    - date: 2012
+      title: 勉強と研究 (神戸大学機械工学部)
+      text: 速度センサー誤差最小化
+    - date: 2011
+      title: 技術と演出の責任者
+      text: >
+              La semaine asiatiqueという大学サークルで二時間芝居の演習。
+              寸劇の作り上がり。
+              ライトと音の責任者
+    - date: 2009
+      title: 工場労働者としてのインターンシップ (SNR-NTN)
+      text: > 
+              静岡県磐田市での働き。
+              一か月にパッケージングと品質管理
+
+tab3:
+  header: 教育課程
+  content:
+    - date: 2015 - 今
+      title: ヒューマノイドロボットに関する博士論文準備者 (Lirmm)
+      text: Haptic covers for humanoid and safe human aware falling strategies
+    - date: 2013 - 2014
+      title: 二年生のロボットに関する修士課程 (ENSAM Paris)
+      text: 先進技術システムとロボット工芸学院、UPMCとENSTAとENS Cachanとの共同 
+    - date: 2008 - 2013
+      title: 工芸学院卒 (INSA Lyon)
+      text: > 
+              機械工学部。
+              ASINSAというアジアとの関係があるグランドゼコール準備学級。
+    - date: 2011 - 2012
+      title: 交換留学　(神戸大学)
+      text: 神戸大学大学院工学研究科機械工学専攻の複雑系機械工学研究室
