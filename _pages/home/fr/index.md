@@ -2,7 +2,7 @@
 layout: default
 lang: fr
 ref: home
-permalink: accueil/
+permalink: fr/home/
 ---
 
 # Bienvenue !

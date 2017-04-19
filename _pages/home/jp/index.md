@@ -3,7 +3,7 @@ layout: default
 lang: jp
 ref: home
 see: もっと見る
-permalink: ホーム/
+permalink: jp/home/
 ---
 
 # ようこそ！

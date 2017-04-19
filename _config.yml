@@ -26,10 +26,11 @@ github_username:  vsamy
 excerpt_separator: <!--more-->
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
 theme: jekyll-theme-slate
 gems:
   - github-pages
+  - redcarpet
   - jekyll-feed
   - jekyll-redirect-from
 exclude:
@@ -40,39 +41,39 @@ menu-lang:
   en:
     home:
       name: Home
-      url: "home/"
+      url: "en/home/"
     about:
       name: About
-      url: "about/"
+      url: "en/about/"
     blog:
       name: Papers
-      url: "papers/"
+      url: "en/papers/"
     repo:
       name: Git repository
-      url: "git-repository/"
+      url: "en/git-repository/"
   fr:
     home:
       name: Accueil
-      url: "accueil/"
+      url: "fr/home/"
     about:
       name: À propos
-      url: "a-propos/"
+      url: "fr/about/"
     blog:
       name: Articles
-      url: "articles/"
+      url: "fr/papers/"
     repo:
       name: Dépôt git
-      url: "dépôt-git/"
+      url: "fr/git-repository"
   jp:
     home:
       name: ホーム
-      url: "ホーム/"
+      url: "jp/home/"
     about:
       name: 私について
-      url: "私について/"
+      url: "jp/about/"
     blog:
-      name: 記事
-      url: "記事/"
+      name: 論文
+      url: "jp/papers/"
     repo:
       name: ギット・リポジトリ
-      url: "ギット・リポジトリ"
+      url: "jp/git-repository"
