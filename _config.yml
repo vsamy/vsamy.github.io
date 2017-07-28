@@ -41,39 +41,39 @@ menu-lang:
   en:
     home:
       name: Home
-      url: "en/home/"
+      url: "en/home"
     about:
       name: About
-      url: "en/about/"
+      url: "en/about"
     blog:
       name: Papers
-      url: "en/papers/"
+      url: "en/papers"
     repo:
       name: Git repository
-      url: "en/git-repository/"
+      url: "en/git-repository"
   fr:
     home:
       name: Accueil
-      url: "fr/home/"
+      url: "fr/home"
     about:
       name: À propos
-      url: "fr/about/"
+      url: "fr/about"
     blog:
       name: Articles
-      url: "fr/papers/"
+      url: "fr/papers"
     repo:
       name: Dépôt git
       url: "fr/git-repository"
   jp:
     home:
       name: ホーム
-      url: "jp/home/"
+      url: "jp/home"
     about:
       name: 私について
-      url: "jp/about/"
+      url: "jp/about"
     blog:
       name: 論文
-      url: "jp/papers/"
+      url: "jp/papers"
     repo:
       name: ギット・リポジトリ
       url: "jp/git-repository"
