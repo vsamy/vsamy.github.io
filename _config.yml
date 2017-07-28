@@ -26,11 +26,11 @@ github_username:  vsamy
 excerpt_separator: <!--more-->
 
 # Build settings
-markdown: redcarpet
+markdown: redcarpet 
 theme: jekyll-theme-slate
 gems:
   - github-pages
-  - redcarpet
+  - redcarpet 
   - jekyll-feed
   - jekyll-redirect-from
 exclude:
@@ -46,8 +46,8 @@ menu-lang:
       name: About
       url: "en/about"
     blog:
-      name: Papers
-      url: "en/papers"
+      name: Blog
+      url: "en/blog"
     repo:
       name: Git repository
       url: "en/git-repository"
@@ -59,8 +59,8 @@ menu-lang:
       name: À propos
       url: "fr/about"
     blog:
-      name: Articles
-      url: "fr/papers"
+      name: Blog
+      url: "fr/blog"
     repo:
       name: Dépôt git
       url: "fr/git-repository"
