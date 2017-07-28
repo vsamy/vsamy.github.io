@@ -20,9 +20,14 @@ sub {
     bottom: -0.25em;
 }
 
-// Overridde ul style
+// Override ul style
 ul {
     list-style: none;
+}
+
+// Override inner
+.inner {
+    max-width: 800px;
 }
 
 // Table for cv
@@ -91,11 +96,13 @@ ul {
 .post {
     float: left;
     text-align: justify;
-    width: 550px;
+    width: 650px;
 }
 
 .navbar {
     float: right;
+    width: 150px;
+    text-align: right;
 }
 
 .navbar ul {
