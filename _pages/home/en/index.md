@@ -12,20 +12,16 @@ All that is presented here is in free access so anyone can get interest in, or u
 ## Short presentation
 I am Vincent Samy, a current PhD. student at LIRMM<sup><a href="#ft1">1</a></sup> , Montpellier, France.
 I work on safe falls for humanoid robots, or 'how to control the robot so that it does smack into the ground too hard'.
-As a fall is a relatively fast event (<1s), i have made a point of honor to develop an on-line algorithm.
+As a fall is a relatively fast event (<1s), i have made a point of honor to develop on-line algorithms.
 The main contribution of my thesis is, without doubt, the adaptive qp that enables to tune the motor's PD-gains on-line in order to comply to the impact.
 
 ## Research outputs
-Through my different experience, i have been working on diverse subject.
-From the manipulability of hybrid actuator to humanoids control and more particulary, safe falls. I have worked in laboratories like the complex mechanical system engineering laboratory at Kobe university<sup><a href="#ft2">2</a></sup>, Japan, the LIST<sup><a href="#ft3">3</a></sup> at the CEA<sup><a href="#ft4">4</a></sup>, France, The ISIR<sup><a href="#ft5">5</a></sup> of the Pierre et Marie Curry university, France, and lastly, the Lirmm.
-... Show sexy pictures. Pousser le robot a été jouissif :)
+Through my different experiences, i have been working on diverse subject.
+From the manipulability of hybrid actuator to humanoids control and more particulary, safe falls. I have worked in laboratories like the complex mechanical system engineering laboratory at Kobe university<sup><a href="#ft2">2</a></sup>, Japan, the LIST<sup><a href="#ft3">3</a></sup> at CEA<sup><a href="#ft4">4</a></sup>, France, ISIR<sup><a href="#ft5">5</a></sup> of the Pierre et Marie Curry university, France, and lastly, the Lirmm.
 
 ## Github repository
 Through the years i have developed different tool to help me for my PhD. but also for fun.
 I drop on my github repository all libraries I can upload freely.
-... 2 pictures for work, for fun.
-
-
 
 <hr>
 <ul>
