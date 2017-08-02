@@ -25,58 +25,58 @@ This equation can be written as a linear system.
 
 $$
     \mathbf{\dot{x}} = 
-    \left\[
+    \left[
         \begin{array}{ccc}
-            0 & 1 & 0 \\\\
-            0 & 0 & 1 \\\\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
             0 & 0 & 0
         \end{array}
-    \right\]\mathbf{x} +
-    \left\[
+    \right]\mathbf{x} +
+    \left[
         \begin{array}{c}
-            0 \\\\
-            0 \\\\
+            0 \\
+            0 \\
             1
         \end{array}
-    \right\]u
+    \right]u
 $$
 
-with \\(\mathbf{x} = \left\[s\ \dot{s}\ \ddot{s}\right\]^T\\) the state variable 
+with \\(\mathbf{x} = \left[s\ \dot{s}\ \ddot{s}\right]^T\\) the state variable 
 and \\(u = \dddot{x}\\) the control variable.
 From it, we can easily perform the discretization.
 
 $$
-    \mathbf{x}\_{k+1} = 
-    \left\[
+    \mathbf{x}_{k+1} = 
+    \left[
         \begin{array}{ccc}
-            1 & T & \frac{T^2}{2} \\\\
-            0 & 1 & T \\\\
+            1 & T & \frac{T^2}{2} \\
+            0 & 1 & T \\
             0 & 0 & 1
         \end{array}
-    \right\]\mathbf{x}\_k +
-    \left\[
+    \right]\mathbf{x}_k +
+    \left[
         \begin{array}{c}
-            \frac{T^3}{6} \\\\
-            \frac{T^2}{2} \\\\
+            \frac{T^3}{6} \\
+            \frac{T^2}{2} \\
             T
         \end{array}
-    \right\]u
+    \right]u
 $$
 
-The ZMP should also be constrained between two references values \\(z\_{min}\\) and \\(z\_{max}\\)
+The ZMP should also be constrained between two references values \\(z_{min}\\) and \\(z_{max}\\)
 which leads to
 
 $$
-    z\_{min} \leq \[1\ 0\ -\frac{h\_{CoM}}{g}\]\mathbf{s} \leq z\_{max}
+    z_{min} \leq [1\ 0\ \text{-}\frac{h_{CoM}}{g}]\mathbf{s} \leq z_{max}
 $$
 
 which is splitted into
 
 $$
-    \left\\{
+    \left\{
         \begin{array}{rcl}
-            -\[1\ 0\ -\frac{h\_{CoM}}{g}\]\mathbf{s} & \leq & -z\_{min} \\\\
-            \[1\ 0\ -\frac{h\_{CoM}}{g}\]\mathbf{s}  & \leq & z\_{max}
+            \text{-}[1\ 0\ \text{-}\frac{h_{CoM}}{g}]\mathbf{s} & \leq & \text{-}z_{min} \\
+            [1\ 0\ \text{-}\frac{h_{CoM}}{g}]\mathbf{s}  & \leq & z_{max}
         \end{array}
     \right.
 $$
@@ -118,8 +118,8 @@ f2 = MatrixXd.Zero(1, 1)
 f1[0, 0] << z_min 
 f2[0, 0] << z_max
 
-TrajConstr1 = copra.NewTrajectoryConstraint(E1, f1)
-TrajConstr2 = copra.NewTrajectoryConstraint(E2, f2)
+traj_constr_1 = copra.NewTrajectoryConstraint(E1, f1)
+traj_constr_2 = copra.NewTrajectoryConstraint(E2, f2)
 ```
 
 Build the cost function
@@ -129,9 +129,9 @@ M = MatrixXd.Zero(1, 3)
 M[0, 0] = 1
 M[0, 0] = h_CoM / g
 
-trajCost = copra.NewTrajectoryCost(M, -z_ref);
-trajCost.weight(Q);
-trajCost.autoSpan(); # Make the dimension consistent (z_ref size is nrSteps)
+traj_cost = copra.NewTrajectoryCost(M, -z_ref);
+traj_cost.weight(Q);
+traj_cost.autoSpan(); # Make the dimension consistent (z_ref size is nrSteps)
 
 Eigen::<double, 1, 1> N, p;
 N = MatrixXd(1, 1)
@@ -139,18 +139,18 @@ p = VectorXd(1)
 N[0, 0] = 1;
 p[0] = 0;
 
-controlCost = copra.ControlCost(N, -p);
-controlCost.weight(R);
+control_cost = copra.ControlCost(N, -p);
+control_cost.weight(R);
 ```
 
 Create the mpc and solve
 
 ```python
 controller = copra.LMPC(ps)
-controller.addConstraint(TrajConstr1)
-controller.addConstraint(TrajConstr2)
-controller.addCost(trajCost)
-controller.addCost(controlCost)
+controller.addConstraint(traj_constr_1)
+controller.addConstraint(traj_constr_2)
+controller.addCost(traj_cost)
+controller.addCost(control_cost)
 
 controller.solve();
 ```

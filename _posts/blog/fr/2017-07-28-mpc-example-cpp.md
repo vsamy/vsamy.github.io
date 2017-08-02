@@ -26,58 +26,58 @@ Cette équation peut s'écrire comme un système linéaire.
 
 $$
     \mathbf{\dot{x}} = 
-    \left\[
+    \left[
         \begin{array}{ccc}
-            0 & 1 & 0 \\\\
-            0 & 0 & 1 \\\\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
             0 & 0 & 0
         \end{array}
-    \right\]\mathbf{x} +
-    \left\[
+    \right]\mathbf{x} +
+    \left[
         \begin{array}{c}
-            0 \\\\
-            0 \\\\
+            0 \\
+            0 \\
             1
         \end{array}
-    \right\]u
+    \right]u
 $$
 
-avec \\(\mathbf{x} = \left\[s\ \dot{s}\ \ddot{s}\right\]^T\\) la variable d'état
+avec \\(\mathbf{x} = \left[s\ \dot{s}\ \ddot{s}\right]^T\\) la variable d'état
 et \\(u = \dddot{x}\\) la variable de contrôle.
 On peut alors discrétiser le système.
 
 $$
-    \mathbf{x}\_{k+1} = 
-    \left\[
+    \mathbf{x}_{k+1} = 
+    \left[
         \begin{array}{ccc}
-            1 & T & \frac{T^2}{2} \\\\
-            0 & 1 & T \\\\
+            1 & T & \frac{T^2}{2} \\
+            0 & 1 & T \\
             0 & 0 & 1
         \end{array}
-    \right\]\mathbf{x}\_k +
-    \left\[
+    \right]\mathbf{x}_k +
+    \left[
         \begin{array}{c}
-            \frac{T^3}{6} \\\\
-            \frac{T^2}{2} \\\\
+            \frac{T^3}{6} \\
+            \frac{T^2}{2} \\
             T
         \end{array}
-    \right\]u
+    \right]u
 $$
 
-Le ZMP doit aussi être contraint par deux valeurs de référence \\(z\_{min}\\) et \\(z\_{max}\\)
+Le ZMP doit aussi être contraint par deux valeurs de référence \\(z_{min}\\) et \\(z_{max}\\)
 ce qui nous amène à
 
 $$
-    z\_{min} \leq \[1\ 0\ -\frac{h\_{CoM}}{g}\]\mathbf{s} \leq z\_{max}
+    z_{min} \leq [1\ 0\ \text{-}\frac{h_{CoM}}{g}]\mathbf{s} \leq z_{max}
 $$
 
 qui peut s'écrire
 
 $$
-    \left\\{
+    \left\{
         \begin{array}{rcl}
-            -\[1\ 0\ -\frac{h\_{CoM}}{g}\]\mathbf{s} & \leq & -z\_{min} \\\\
-            \[1\ 0\ -\frac{h\_{CoM}}{g}\]\mathbf{s}  & \leq & z\_{max}
+            \text{-}[1\ 0\ \text{-}\frac{h_{CoM}}{g}]\mathbf{s} & \leq & \text{-}z_{min} \\
+            [1\ 0\ \text{-}\frac{h_{CoM}}{g}]\mathbf{s}  & \leq & z_{max}
         \end{array}
     \right.
 $$

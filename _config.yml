@@ -26,11 +26,11 @@ github_username:  vsamy
 excerpt_separator: <!--more-->
 
 # Build settings
-markdown: redcarpet 
+markdown: kramdown 
 theme: jekyll-theme-slate
 gems:
   - github-pages
-  - redcarpet 
+  - kramdown 
   - jekyll-feed
   - jekyll-redirect-from
 exclude:

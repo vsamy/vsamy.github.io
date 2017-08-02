@@ -17,6 +17,7 @@ This example aims to solve a common problem in humanoid robot dynamic walk.
 In dynamic walk, a model predictive control is used to find a trajectory for the Center of Mass (CoM) \\(s\\) of the robot considering its Zero-momentum Point (ZMP). 
 The ZMP is a point on the ground which must stay inside the polygon defined by the foot of the robot. 
 Supposing the CoM of the robot does not move vertically, the position \\(z\\) of the CoP is
+
 $$
     z = s - \frac{h_{CoM}}{g}\ddot{s}
 $$
@@ -25,58 +26,58 @@ This equation can be written as a linear system.
 
 $$
     \mathbf{\dot{x}} = 
-    \left\[
+    \left[
         \begin{array}{ccc}
-            0 & 1 & 0 \\\\
-            0 & 0 & 1 \\\\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
             0 & 0 & 0
         \end{array}
-    \right\]\mathbf{x} +
-    \left\[
+    \right]\mathbf{x} +
+    \left[
         \begin{array}{c}
-            0 \\\\
-            0 \\\\
+            0 \\
+            0 \\
             1
         \end{array}
-    \right\]u
+    \right]u
 $$
 
-with \\(\mathbf{x} = \left\[s\ \dot{s}\ \ddot{s}\right\]^T\\) the state variable 
+with \\(\mathbf{x} = \left[s\ \dot{s}\ \ddot{s}\right]^T\\) the state variable 
 and \\(u = \dddot{x}\\) the control variable.
 From it, we can easily perform the discretization.
 
 $$
-    \mathbf{x}\_{k+1} = 
-    \left\[
+    \mathbf{x}_{k+1} = 
+    \left[
         \begin{array}{ccc}
-            1 & T & \frac{T^2}{2} \\\\
-            0 & 1 & T \\\\
+            1 & T & \frac{T^2}{2} \\
+            0 & 1 & T \\
             0 & 0 & 1
         \end{array}
-    \right\]\mathbf{x}\_k +
-    \left\[
+    \right]\mathbf{x}_k +
+    \left[
         \begin{array}{c}
-            \frac{T^3}{6} \\\\
-            \frac{T^2}{2} \\\\
+            \frac{T^3}{6} \\
+            \frac{T^2}{2} \\
             T
         \end{array}
-    \right\]u
+    \right]u
 $$
 
-The ZMP should also be constrained between two references values \\(z\_{min}\\) and \\(z\_{max}\\)
+The ZMP should also be constrained between two references values \\(z_{min}\\) and \\(z_{max}\\)
 which leads to
 
 $$
-    z\_{min} \leq \[1\ 0\ -\frac{h\_{CoM}}{g}\]\mathbf{s} \leq z\_{max}
+    z_{min} \leq [1\ 0\ \text{-}\frac{h_{CoM}}{g}]\mathbf{s} \leq z_{max}
 $$
 
 which is splitted into
 
 $$
-    \left\\{
+    \left\{
         \begin{array}{rcl}
-            -\[1\ 0\ -\frac{h\_{CoM}}{g}\]\mathbf{s} & \leq & -z\_{min} \\\\
-            \[1\ 0\ -\frac{h\_{CoM}}{g}\]\mathbf{s}  & \leq & z\_{max}
+            \text{-}[1\ 0\ \text{-}\frac{h_{CoM}}{g}]\mathbf{s} & \leq & \text{-}z_{min} \\
+            [1\ 0\ \text{-}\frac{h_{CoM}}{g}]\mathbf{s}  & \leq & z_{max}
         \end{array}
     \right.
 $$
