@@ -14,9 +14,9 @@ L'exemple est basé sur ce [papier](https://hal.inria.fr/inria-00390462/document
 <!--more-->
 
 Cet exemple cherche à résoudre un problème récurrent de marche dynamique en robotique.
-En locomotion humanoïde, le modèle de contrôle prédictif est utilisé pour rechercher une trajectoire adéquate du centre de mass (CoM) \\(s\\) du robot en considérant le point de moment-zéro (ZMP). 
+En locomotion humanoïde, le modèle de contrôle prédictif est utilisé pour rechercher une trajectoire adéquate du centre de mass (CoM) $s$ du robot en considérant le point de moment-zéro (ZMP). 
 Le ZMP est un point sur le sol qui doit rester dans le polygone défini par les pieds du robot.
-Supposant que le CoM du robot reste fixe sur la verticale, la position \\(z\\) du ZMP est
+Supposant que le CoM du robot reste fixe sur la verticale, la position $z$ du ZMP est
 
 $$
     z = s - \frac{h_{CoM}}{g}\ddot{s}
@@ -42,8 +42,8 @@ $$
     \right]u
 $$
 
-avec \\(\mathbf{x} = \left[s\ \dot{s}\ \ddot{s}\right]^T\\) la variable d'état
-et \\(u = \dddot{x}\\) la variable de contrôle.
+avec $\mathbf{x} = \left[s\ \dot{s}\ \ddot{s}\right]^T$ la variable d'état
+et $u = \dddot{x}$ la variable de contrôle.
 On peut alors discrétiser le système.
 
 $$
@@ -64,7 +64,7 @@ $$
     \right]u
 $$
 
-Le ZMP doit aussi être contraint par deux valeurs de référence \\(z_{min}\\) et \\(z_{max}\\)
+Le ZMP doit aussi être contraint par deux valeurs de référence $z_{min}$ et $z_{max}$
 ce qui nous amène à
 
 $$
@@ -82,7 +82,7 @@ $$
     \right.
 $$
 
-Finalement, il y a deux fonctions de coût i) un coût en trajectoire \\(\mathbf{z}^{ref}\\) avec un poids \\(Q\\) et ii) un coût en contrôle avec un poids \\(R\\).
+Finalement, il y a deux fonctions de coût i) un coût en trajectoire $\mathbf{z}^{ref}$ avec un poids $Q$ et ii) un coût en contrôle avec un poids $R$.
 
 ### Le code
 Tout d'abord, les headers

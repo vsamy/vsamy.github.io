@@ -14,9 +14,9 @@ The example is based on this [paper](https://hal.inria.fr/inria-00390462/documen
 <!--more-->
 
 This example aims to solve a common problem in humanoid robot dynamic walk.
-In dynamic walk, a model predictive control is used to find a trajectory for the Center of Mass (CoM) \\(s\\) of the robot considering its Zero-momentum Point (ZMP). 
+In dynamic walk, a model predictive control is used to find a trajectory for the Center of Mass (CoM) $s$ of the robot considering its Zero-momentum Point (ZMP). 
 The ZMP is a point on the ground which must stay inside the polygon defined by the foot of the robot. 
-Supposing the CoM of the robot does not move vertically, the position \\(z\\) of the CoP is
+Supposing the CoM of the robot does not move vertically, the position $z$ of the CoP is
 
 $$
     z = s - \frac{h_{CoM}}{g}\ddot{s}
@@ -42,8 +42,8 @@ $$
     \right]u
 $$
 
-with \\(\mathbf{x} = \left[s\ \dot{s}\ \ddot{s}\right]^T\\) the state variable 
-and \\(u = \dddot{x}\\) the control variable.
+with $\mathbf{x} = \left[s\ \dot{s}\ \ddot{s}\right]^T$ the state variable 
+and $u = \dddot{x}$ the control variable.
 From it, we can easily perform the discretization.
 
 $$
@@ -64,7 +64,7 @@ $$
     \right]u
 $$
 
-The ZMP should also be constrained between two references values \\(z_{min}\\) and \\(z_{max}\\)
+The ZMP should also be constrained between two references values $z_{min}$ and $z_{max}$
 which leads to
 
 $$
@@ -82,7 +82,7 @@ $$
     \right.
 $$
 
-And finally we have two cost functions i) A trajectory cost \\(\mathbf{z}^{ref}\\) with a weight \\(Q\\) and ii) a control cost with weight \\(R\\).
+And finally we have two cost functions i) A trajectory cost $\mathbf{z}^{ref}$ with a weight $Q$ and ii) a control cost with weight $R$.
 
 ### The code
 First of all, the headers
