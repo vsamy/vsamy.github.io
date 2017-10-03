@@ -2,13 +2,13 @@
 layout: post_page
 lang: fr
 ref: blog
-post_url: mpc-example-python
+post_url: copra-example-python
 title: Exemple Python de Copra
-permalink: fr/blog/mpc-example-python
+permalink: fr/blog/copra-example-python
 ---
 
 Ceci un exmple d'utilisation de [Copra](https://github.com/vsamy/Copra) library.
-Pour mieux comprendre la librarie, vous pouvez voir [ici]({{site.url}}/en/git-repository/mpc).
+Pour mieux comprendre la librarie, vous pouvez voir [ici]({{site.url}}/en/git-repository/copra).
 C'est un exemple simple écrit en C++ et basé sur le problème de locomotion des robots.
 L'exemple est basé sur ce [papier](https://hal.inria.fr/inria-00390462/document).
 <!--more-->
@@ -144,7 +144,7 @@ control_cost = copra.ControlCost(N, -p);
 control_cost.weight(R);
 ```
 
-On peut alors créer le mpc et résoudre
+On peut alors créer le copra et résoudre
 
 ```python
 controller = copra.LMPC(ps)

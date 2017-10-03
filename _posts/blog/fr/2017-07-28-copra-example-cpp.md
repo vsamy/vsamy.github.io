@@ -2,13 +2,13 @@
 layout: post_page
 lang: fr
 ref: blog
-post_url: mpc-example-cpp
+post_url: copra-example-cpp
 title: Exemple C++ de Copra
-permalink: fr/blog/mpc-example-cpp
+permalink: fr/blog/copra-example-cpp
 ---
 
 Ceci un exmple d'utilisation de [Copra](https://github.com/vsamy/Copra) library.
-Pour mieux comprendre la librarie, vous pouvez voir [ici]({{site.url}}/en/git-repository/mpc).
+Pour mieux comprendre la librarie, vous pouvez voir [ici]({{site.url}}/en/git-repository/copra).
 C'est un exemple simple écrit en C++ et basé sur le problème de locomotion des robots.
 L'exemple est basé sur ce [papier](https://hal.inria.fr/inria-00390462/document).
 <!--more-->
@@ -93,11 +93,11 @@ Tout d'abord, les headers
 #include <memory>
 #include <utility>
 
-// mpc headers
-#include <mpc/constraints.h>
-#include <mpc/costFunctions.h>
-#include <mpc/LMPC.h>
-#include <mpc/PreviewSystem.h>
+// copra headers
+#include <copra/constraints.h>
+#include <copra/costFunctions.h>
+#include <copra/LMPC.h>
+#include <copra/PreviewSystem.h>
 ```
 
 puis il faut créer le système
@@ -112,7 +112,7 @@ Eigen::Vector3d B(T* T * T / 6., T * T / 2, T);
 
 Eigen::Vector3d d(Eigen::Vector3d::Zero());
 Eigen::Vector3d x_0(Eigen::Vector3d::Zero());
-auto ps = std::make_shared<mpc::PreviewSystem>(A, B, d, x_0, nrStep);
+auto ps = std::make_shared<copra::PreviewSystem>(A, B, d, x_0, nrStep);
 ```
 
 Puis on créé les contraintes sur le ZMP
@@ -125,8 +125,8 @@ Eigen::<double, 1, 1> f1, f2;
 f1 << z_min; 
 f2 << z_max;
 
-TrajConstr1 = std::make_shared<mpc::TrajectoryConstraint>(E1, f1);
-TrajConstr2 = std::make_shared<mpc::TrajectoryConstraint>(E2, f2);
+TrajConstr1 = std::make_shared<copra::TrajectoryConstraint>(E1, f1);
+TrajConstr2 = std::make_shared<copra::TrajectoryConstraint>(E2, f2);
 ```
 
 On construit les fonctions coût
@@ -135,7 +135,7 @@ On construit les fonctions coût
 Eigen::<double, 1, 3> M;
 M << 1, 0, -h_CoM / g;
 
-trajCost = std::make_shared<mpc::TrajectoryCost>(M, -z_ref);
+trajCost = std::make_shared<copra::TrajectoryCost>(M, -z_ref);
 trajCost->weight(Q);
 trajCost->autoSpan(); // Make the dimension consistent (z_ref size is nrSteps)
 
@@ -143,14 +143,14 @@ Eigen::<double, 1, 1> N, p;
 N << 1;
 p << 0;
 
-controlCost = std::make_shared<mpc::ControlCost>(N, -p);
+controlCost = std::make_shared<copra::ControlCost>(N, -p);
 controlCost->weight(R);
 ```
 
-On peut alors créer le mpc et résoudre
+On peut alors créer le copra et résoudre
 
 ```c++
-mpc::LMPC controller(ps);
+copra::LMPC controller(ps);
 controller.addConstraint(TrajConstr1);
 controller.addConstraint(TrajConstr2);
 controller.addCost(trajCost);

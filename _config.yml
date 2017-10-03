@@ -28,7 +28,7 @@ excerpt_separator: <!--more-->
 # Build settings
 markdown: kramdown 
 theme: jekyll-theme-slate
-gems:
+plugins:
   - github-pages
   - kramdown 
   - jekyll-feed

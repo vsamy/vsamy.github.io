@@ -2,14 +2,14 @@
 layout: post_page
 lang: en
 ref: blog
-post_url: mpc-example-cpp
-title: C++ example of Copra
-permalink: en/blog/mpc-example-cpp
+post_url: copra-example-python
+title: Python example of Copra
+permalink: en/blog/copra-example-python
 ---
 
 This is an how-to-use article of [Copra](https://github.com/vsamy/Copra) library.
-To understand more on the library, you can visit [here]({{site.url}}/en/git-repository/mpc).
-It is a simple example written in C++ and base on robot locomotion problem.
+To understand more on the library, you can visit [here]({{site.url}}/en/git-repository/copra).
+It is a simple example written in python and base on robot locomotion problem.
 The example is based on this [paper](https://hal.inria.fr/inria-00390462/document).
 <!--more-->
 
@@ -17,7 +17,6 @@ This example aims to solve a common problem in humanoid robot dynamic walk.
 In dynamic walk, a model predictive control is used to find a trajectory for the Center of Mass (CoM) $s$ of the robot considering its Zero-momentum Point (ZMP). 
 The ZMP is a point on the ground which must stay inside the polygon defined by the foot of the robot. 
 Supposing the CoM of the robot does not move vertically, the position $z$ of the CoP is
-
 $$
     z = s - \frac{h_{CoM}}{g}\ddot{s}
 $$
@@ -84,94 +83,91 @@ $$
 
 And finally we have two cost functions i) A trajectory cost $\mathbf{z}^{ref}$ with a weight $Q$ and ii) a control cost with weight $R$.
 
-### The code
+The code
+--------
 First of all, the headers
 
-```c++
-// stl headers
-#include <iostream>
-#include <memory>
-#include <utility>
-
-// mpc headers
-#include <mpc/constraints.h>
-#include <mpc/costFunctions.h>
-#include <mpc/LMPC.h>
-#include <mpc/PreviewSystem.h>
+```python
+from minieigen import *
+import copra
 ```
 
 then we need to create the system
 
-```c++
-Eigen::Matrix3d A(Eigen::Matrix3d::Identity());
-A(0, 1) = T;
-A(0, 2) = T * T / 2.;
-A(1, 2) = T;
+```python
+A = Matrix3d.Identity
+A[0, 1] = T
+A[0, 2] = T * T / 2.
+A[1, 2] = T
 
-Eigen::Vector3d B(T* T * T / 6., T * T / 2, T);
+B = Vector3d(T* T * T / 6., T * T / 2, T)
 
-Eigen::Vector3d d(Eigen::Vector3d::Zero());
-Eigen::Vector3d x_0(Eigen::Vector3d::Zero());
-auto ps = std::make_shared<mpc::PreviewSystem>(A, B, d, x_0, nrStep);
+d = Vector3d.Zero
+x_0 = Vector3d.Zero
+ps = copra.NewPreviewSystem(A, B, d, x_0, nrStep)
 ```
 
 Then we create the ZMP constraint 
 
-```c++
-Eigen::<double, 1, 3> E1, E2;
-E2 << 1, 0, h_CoM / g;
-E1 = -E2;
-Eigen::<double, 1, 1> f1, f2;
-f1 << z_min; 
-f2 << z_max;
+```python
+E2 = MatrixXd.Zero(1, 3)
+E2[0, 0] = 1
+E2[0, 0] = h_CoM / g
+E1 = -E2
+f1 = MatrixXd.Zero(1, 1)
+f2 = MatrixXd.Zero(1, 1)
+f1[0, 0] << z_min 
+f2[0, 0] << z_max
 
-TrajConstr1 = std::make_shared<mpc::TrajectoryConstraint>(E1, f1);
-TrajConstr2 = std::make_shared<mpc::TrajectoryConstraint>(E2, f2);
+traj_constr_1 = copra.NewTrajectoryConstraint(E1, f1)
+traj_constr_2 = copra.NewTrajectoryConstraint(E2, f2)
 ```
 
 Build the cost function
 
-```c++
-Eigen::<double, 1, 3> M;
-M << 1, 0, -h_CoM / g;
+```python
+M = MatrixXd.Zero(1, 3)
+M[0, 0] = 1
+M[0, 0] = h_CoM / g
 
-trajCost = std::make_shared<mpc::TrajectoryCost>(M, -z_ref);
-trajCost->weight(Q);
-trajCost->autoSpan(); // Make the dimension consistent (z_ref size is nrSteps)
+traj_cost = copra.NewTrajectoryCost(M, -z_ref);
+traj_cost.weight(Q);
+traj_cost.autoSpan(); # Make the dimension consistent (z_ref size is nrSteps)
 
 Eigen::<double, 1, 1> N, p;
-N << 1;
-p << 0;
+N = MatrixXd(1, 1)
+p = VectorXd(1)
+N[0, 0] = 1;
+p[0] = 0;
 
-controlCost = std::make_shared<mpc::ControlCost>(N, -p);
-controlCost->weight(R);
+control_cost = copra.ControlCost(N, -p);
+control_cost.weight(R);
 ```
 
-Create the mpc and solve
+Create the copra and solve
 
-```c++
-mpc::LMPC controller(ps);
-controller.addConstraint(TrajConstr1);
-controller.addConstraint(TrajConstr2);
-controller.addCost(trajCost);
-controller.addCost(controlCost);
+```python
+controller = copra.LMPC(ps)
+controller.addConstraint(traj_constr_1)
+controller.addConstraint(traj_constr_2)
+controller.addCost(traj_cost)
+controller.addCost(control_cost)
 
 controller.solve();
 ```
 
 Finally, get the results
 
-```c++
-Eigen::VectorXd trajectory(controller.trajectory());
-Eigen::VectorXd jerk(controller.control());
-Eigen::VectorXd comPos(nrSteps);
-Eigen::VectorXd comVel(nrSteps);
-Eigen::VectorXd comAcc(nrSteps);
-Eigen::VectorXd zmpPos(nrSteps);
-for (int i = 0; i < nrSteps; ++i) {
-    comPos(i) = trajectory(3 * i);
-    comVel(2 * i) = trajectory(3 * i + 1);
-    comAcc(2 * i) = trajectory(3 * i + 2);
-    zmpPos(i) = comPos(i) - (h_CoM / g) * comAcc(i);
-}
+```python
+trajectory = controller.trajectory()
+jerk = controller.control()
+com_pos = VectorXd(nrSteps)
+com_vel = VectorXd(nrSteps)
+com_acc = VectorXd(nrSteps)
+zmp_pos = VectorXd(nrSteps)
+for i in xrange(nr_steps):
+    com_pos[i] = trajectory[3 * i]
+    com_vel[2 * i] = trajectory[3 * i + 1]
+    com_acc[2 * i] = trajectory[3 * i + 2]
+    zmp_pos[i] = com_pos[i] - (h_CoM / g) * com_acc[i]
 ```
