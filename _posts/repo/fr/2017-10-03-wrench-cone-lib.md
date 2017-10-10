@@ -1,23 +1,23 @@
 ---
 layout: post_page
-lang: en
+lang: fr
 ref: repo
 post_url: wrench_cone_lib
 title: wrench-cone-lib
-permalink: en/git-repository/wrench-cone-lib
+permalink: fr/git-repository/wrench-cone-lib
 ---
 
-This library is little tool for computing a wrench cone of several contact surfaces.
+Cette librairie est un outil simple et efficace pour faire le calcul du cone des torseurs comprennent plusieurs surfaces de contacts.
 
-It can compute the rays (the vertex representation) of the polyhedron and can find the halfspaces (the halfspace representation) by using the double description algorithm.
+Elle permet de calculer les rayons (representation par vertice) de polyhèdre et trouve les demi-plans associés (representation par demi-plans) en utilisant un algorithme de double description.
 
-This lib is based on Fukuda's [cdd](https://www.inf.ethz.ch/personal/fukudak/cdd_home/) lib and a simple threadsafe eigen wrapper [lib](https://github.com/vsamy/eigen-cdd)
+Cette lib est basée sur [cdd (en)](https://www.inf.ethz.ch/personal/fukudak/cdd_home/) de Fukuda et une petite [lib](https://github.com/vsamy/eigen-cdd) wrappée avec eigen et threadsafe.
 <!--more-->
 
-The definition of the **C**ontact **W**rench **C**one (CWC) has been written in [this paper](https://scaron.info/papers/journal/caron-tro-2016.pdf). Here, i re-explain what it is and give more details of how works the library.
+La definition du **C**one des **T**orseurs de **C**ontacts (CWC pour **C**ontact **W**rench **C**one) a été écrite dans [ce papier](https://scaron.info/papers/journal/caron-tro-2016.pdf). Je vais ré-expliquer rapidement ça définition et donner plus de détails sur le fonctionnement de la librairie.
 
-## Definition
-The contact wrench at point $O$ is defined by
+## Définition
+Le torseur des contacts au point $O$ est défini par
 
 $$
 \begin{equation}
@@ -35,9 +35,9 @@ $$
 \end{equation}
 $$
 
-with $\mathbf{f}_i$ the force at contact $i$ and $\mathbf{r}_i = \overrightarrow{OC}$ is the translation vector from point $O$ to contact $C$ in the world coordinates.
+avec $\mathbf{f}_i$ la force au contact $i$ et $\mathbf{r}_i = \overrightarrow{OC}$ est le vecteur de translation du point $O$ au contact $C$ dans les coordonnées monde.
 
-The contact wrench cone is its polyhedral representation where the force $\mathbf{f}_i$ is the friction cone.
+Le cone des torseurs de contacts est sa représentation polyhédrale où la force $\mathbf{f}_i$ est le cone de frottement.
 
 As explain [here](https://scaron.info/teaching/contact-stability.html), 'the CWC characterizes all feasible motions'.
 
