@@ -4,7 +4,7 @@ lang: fr
 ref: repo
 post_url: wrench_cone_lib
 title: wrench-cone-lib
-permalink: fr/git-repository/wrench-cone-lib
+permalink: fr/git-repository/wrench_cone_lib
 ---
 
 Cette librairie est un outil simple et efficace pour faire le calcul du cone des torseurs comprennent plusieurs surfaces de contacts.
@@ -14,7 +14,7 @@ Elle permet de calculer les rayons (representation par vertice) de polyhèdre et
 Cette lib est basée sur [cdd (en)](https://www.inf.ethz.ch/personal/fukudak/cdd_home/) de Fukuda et une petite [lib](https://github.com/vsamy/eigen-cdd) wrappée avec eigen et threadsafe.
 <!--more-->
 
-La definition du **C**one des **T**orseurs de **C**ontacts (CWC pour **C**ontact **W**rench **C**one) a été écrite dans [ce papier](https://scaron.info/papers/journal/caron-tro-2016.pdf). Je vais ré-expliquer rapidement ça définition et donner plus de détails sur le fonctionnement de la librairie.
+La definition du **C**ône des **T**orseurs de **C**ontacts (CWC pour **C**ontact **W**rench **C**one) a été écrite dans [ce papier](https://scaron.info/papers/journal/caron-tro-2016.pdf). Je vais ré-expliquer rapidement sa définition et donner plus de détails sur le fonctionnement de la librairie.
 
 ## Définition
 Le torseur des contacts au point $O$ est défini par
@@ -37,30 +37,30 @@ $$
 
 avec $\mathbf{f}_i$ la force au contact $i$ et $\mathbf{r}_i = \overrightarrow{OC}$ est le vecteur de translation du point $O$ au contact $C$ dans les coordonnées monde.
 
-Le cone des torseurs de contacts est sa représentation polyhédrale où la force $\mathbf{f}_i$ est le cone de frottement.
+Le cone des torseurs de contacts est sa représentation polyédrale où la force $\mathbf{f}_i$ est le cone de frottement.
 
 As explain [here](https://scaron.info/teaching/contact-stability.html), 'the CWC characterizes all feasible motions'.
 
-## Fonctionning of the lib
-There are only two classes in the library. `ContactSurface` characterizes the surface involved in the computation of the CWC. `WrenchCone` computes the polyhedral representation of the contact wrench.
+## Fonctionnement de la lib
+Il y a seulement deux classes dans cette librairie. `ContactSurface` caractérise une surface impliquée dans le calcul du CWC. `WrenchCone` calcule la representation polyédrale du torseur de contact.
 
-### Contact surface
-A contact surface $S$ depends on several variables.
-It holds the translation and rotation information of the surface in the world frame coordinates, the static friction coefficient $\mu$, the number of generators of the friction cone $N^S_G$ and the points belonging to the surface in the surface coordinates. $N^S_p$ is the number of points.
+### Surface de contact
+Une surface de contact $S$ dépend de plusieurs variables.
+Elle doit contenir : ses informations de translation et rotation dans les coordonnées du monde, son coefficient de frottement statique $\mu$, the nombre de génératrices du cône de frottement $N_G$ and le nombre de points $N_p$ lui appartenant. 
 
-By convention, the normal of the surface is the z-axis of the surface frame.
+Par convention, la normale à la surface est l'axe z du repère de la surface.
 
-The linearization of the friction cone is done at run time and depends of the number of generators. For a 3D friction cone, this number should be at least superior or equal to 3. The higher this number is, the better the cone approximation is.
+La linéarisation du cône de frottement est calculée implicitement et dépend des différentes variables de la surface. Pour un cône 3D, le nombre de génératrices devrait être au minimum au nombre de 3. Plus grand est ce nombre, plus précise sera l'approximation du cône.
 
-The functions `rectangularSurface()` (in C++) and `rectangular_surface()` (in python) allows to build a simple rectangular surface with 4 points (one at each corner).
+La fonction `rectangularSurface()` (en C++) et `rectangular_surface()` (en python) permet de construire de manière simple une surface rectangulaire contenant 4 points (un à chaque coin).
 
-By default, the static friction coefficient is 0.7 and the number of cone generators is 4.
+Par défaut, le coefficient de frottement statique est de 0.7 et le nombre de génératrices est de 4.
 
 ### WrenchCone
-The WrenchCone class has only two functions `getRays()` and `getHalfspaces()` (in python `get_rays()` and `get_halfspaces()`).
-The former compute the rays (the polyhedral vertex representation) of the wrench cone.
+La classe WrenchCone a seulement deux fonctions : `getRays()` et `getHalfspaces()` (en python `get_rays()` et `get_halfspaces()`).
+La première calcule les rayons (la représentation par vertex) du cône des torseurs
 
-The force at the contact along a cone generator is simply given by
+La force au contact le long d'une des génératrices du cône de frottement est tout simplement
 
 $$
 \begin{equation}
@@ -68,8 +68,8 @@ $$
 \end{equation}
 $$
 
-where $g$ is a cone generator and $\lambda \geq 0$ is the force magnitude. 
-For one cone at contact point $\mathbf{p}_i$, the wrench matrix is given by
+où $\mathbf{g}$ est une génératrice du cône et $\lambda \geq 0$ est la magnitude de la force.
+Pour un cône au point de contact $\mathbf{p}_i$, la matrice des torseurs est donnée par
 
 $$
 G_i=
@@ -79,7 +79,7 @@ G_i=
 \end{bmatrix}
 $$
 
-For a surface of $N_p$ points with $N_G$ cone generators, the contact force can be decomposed in $N_p*N_G$ variables.
+Pour une surface $S$ à $N_p$ points avec $N_G$ génératrices de cône, la force de contact peut se décomposer en $N_p*N_G$ variables.
 
 $$
 G^S=
@@ -88,7 +88,7 @@ G^S=
 \end{bmatrix}
 $$
 
-Letting $N_S$ be the number of surfaces, the vertex representation of the wrench cone is the concatenation of all those vectors, thus, the function returns the matrix
+En prenant $N_S$ le nombre de surfaces, la représentation par vertex du cône des torseurs est la concatenation de toutes les surfaces, ainsi, la fonction retourne la mtrice
 
 $$
 \begin{equation}
@@ -99,7 +99,7 @@ G=
 \end{equation}
 $$
 
-Finally, the latter method return the $\mathcal{H}$-representation using a double-description method with cdd.
+Finalement, la seconde méthode renvoie la $\mathcal{H}$-représentation (représentation par demi-plan) en utilisant la méthode de double description fournie par cdd.
 
-## Examples
-You can find a C++ example [here]({{site.url}}/en/blog/wcl-example-cpp), and Python example [here]({{site.url}}/en/blog/wcl-example-python).
+## Exemples
+Vous pouvez trouver un exemple en C++ [ici]({{site.url}}/en/blog/wcl-example-cpp), et en Python [ici](https://github.com/stephane-caron/pymanoid/blob/master/examples/wrench_cone.py).

@@ -4,7 +4,7 @@ lang: en
 ref: repo
 post_url: wrench_cone_lib
 title: wrench-cone-lib
-permalink: en/git-repository/wrench-cone-lib
+permalink: en/git-repository/wrench_cone_lib
 ---
 
 This library is little tool for computing a wrench cone of several contact surfaces.
@@ -39,18 +39,18 @@ with $\mathbf{f}_i$ the force at contact $i$ and $\mathbf{r}_i = \overrightarrow
 
 The contact wrench cone is its polyhedral representation where the force $\mathbf{f}_i$ is the friction cone.
 
-As explain [here](https://scaron.info/teaching/contact-stability.html), 'the CWC characterizes all feasible motions'.
+As explain [here](https://scaron.info/teaching/contact-stability.html), 'if the CWC exists, the motion *may be* feasible'.
 
 ## Fonctionning of the lib
 There are only two classes in the library. `ContactSurface` characterizes the surface involved in the computation of the CWC. `WrenchCone` computes the polyhedral representation of the contact wrench.
 
 ### Contact surface
 A contact surface $S$ depends on several variables.
-It holds the translation and rotation information of the surface in the world frame coordinates, the static friction coefficient $\mu$, the number of generators of the friction cone $N^S_G$ and the points belonging to the surface in the surface coordinates. $N^S_p$ is the number of points.
+It holds the translation and rotation information of the surface in the world frame coordinates, the static friction coefficient $\mu$, the number of generators of the friction cone $N_G$ and the number of points $N_p$ that belongs to it.
 
 By convention, the normal of the surface is the z-axis of the surface frame.
 
-The linearization of the friction cone is done at run time and depends of the number of generators. For a 3D friction cone, this number should be at least superior or equal to 3. The higher this number is, the better the cone approximation is.
+The linearization of the friction cone is done at run time and depends of the surface's variables. For a 3D friction cone, this number should be at least superior or equal to 3. The higher this number is, the better the cone approximation is.
 
 The functions `rectangularSurface()` (in C++) and `rectangular_surface()` (in python) allows to build a simple rectangular surface with 4 points (one at each corner).
 
@@ -64,11 +64,11 @@ The force at the contact along a cone generator is simply given by
 
 $$
 \begin{equation}
-    \mathbf{f}_g = g\lambda
+    \mathbf{f}_g = \mathbf{g}\lambda
 \end{equation}
 $$
 
-where $g$ is a cone generator and $\lambda \geq 0$ is the force magnitude. 
+where $\mathbf{g}$ is a cone generator and $\lambda \geq 0$ is the force magnitude. 
 For one cone at contact point $\mathbf{p}_i$, the wrench matrix is given by
 
 $$
@@ -79,7 +79,7 @@ G_i=
 \end{bmatrix}
 $$
 
-For a surface of $N_p$ points with $N_G$ cone generators, the contact force can be decomposed in $N_p*N_G$ variables.
+For a surface $S$ of $N_p$ points with $N_G$ cone generators, the contact force can be decomposed in $N_p*N_G$ variables.
 
 $$
 G^S=
@@ -88,7 +88,7 @@ G^S=
 \end{bmatrix}
 $$
 
-Letting $N_S$ be the number of surfaces, the vertex representation of the wrench cone is the concatenation of all those vectors, thus, the function returns the matrix
+Letting $N_S$ be the number of surfaces, the vertex representation of the wrench cone is the concatenation of all the surfaces, thus, the function returns the matrix
 
 $$
 \begin{equation}
@@ -99,7 +99,7 @@ G=
 \end{equation}
 $$
 
-Finally, the latter method return the $\mathcal{H}$-representation using a double-description method with cdd.
+Finally, the latter method return the $\mathcal{H}$-representation (Halfspaces representation) using a double-description method with cdd.
 
 ## Examples
-You can find a C++ example [here]({{site.url}}/en/blog/wcl-example-cpp), and Python example [here]({{site.url}}/en/blog/wcl-example-python).
+You can find a C++ example [here]({{site.url}}/en/blog/wcl-example-cpp), and Python example [here](https://github.com/stephane-caron/pymanoid/blob/master/examples/wrench_cone.py).
