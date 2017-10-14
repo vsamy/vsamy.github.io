@@ -11,7 +11,7 @@ Cette librairie est un outil simple et efficace pour faire le calcul du cone des
 
 Elle permet de calculer les rayons (representation par vertice) de polyhèdre et trouve les demi-plans associés (representation par demi-plans) en utilisant un algorithme de double description.
 
-Cette lib est basée sur [cdd (en)](https://www.inf.ethz.ch/personal/fukudak/cdd_home/) de Fukuda et une petite [lib](https://github.com/vsamy/eigen-cdd) wrappée avec eigen et threadsafe.
+Cette lib est basée sur [cdd (en)](https://www.inf.ethz.ch/personal/fukudak/cdd_home/) de Fukuda et son [wrapper](https://github.com/vsamy/eigen-cdd) Eigen et threadsafe.
 <!--more-->
 
 La definition du **C**ône des **T**orseurs de **C**ontacts (CWC pour **C**ontact **W**rench **C**one) a été écrite dans [ce papier](https://scaron.info/papers/journal/caron-tro-2016.pdf). Je vais ré-expliquer rapidement sa définition et donner plus de détails sur le fonctionnement de la librairie.
@@ -39,7 +39,7 @@ avec $\mathbf{f}_i$ la force au contact $i$ et $\mathbf{r}_i = \overrightarrow{O
 
 Le cone des torseurs de contacts est sa représentation polyédrale où la force $\mathbf{f}_i$ est le cone de frottement.
 
-As explain [here](https://scaron.info/teaching/contact-stability.html), 'the CWC characterizes all feasible motions'.
+Comme expliquer [ici](https://scaron.info/teaching/contact-stability.html), 'if the CWC exists, the motion may be feasible' (Si le CWC exists, le mouvement peut être possible).
 
 ## Fonctionnement de la lib
 Il y a seulement deux classes dans cette librairie. `ContactSurface` caractérise une surface impliquée dans le calcul du CWC. `WrenchCone` calcule la representation polyédrale du torseur de contact.
@@ -101,5 +101,36 @@ $$
 
 Finalement, la seconde méthode renvoie la $\mathcal{H}$-représentation (représentation par demi-plan) en utilisant la méthode de double description fournie par cdd.
 
+## La lib en bref
+### Option de compilation
+Tout d'abord, il est important de savoir qu'il existe une option de compilation appelée `PLUCKER_NOTATION` si il y a une besoin d'avoir les matrices et vecteurs avec les notations de Plücker.
+Le torseur devient alors
+
+$$
+\begin{equation}
+    \mathbf{w}_O \overset{\text{def}}{=} 
+    \begin{bmatrix}
+        \mathbf{\tau}_O \\
+        \mathbf{f}
+    \end{bmatrix}
+    \overset{\text{def}}{=} 
+    \sum\limits_{\text{contact i}}
+    \begin{bmatrix}
+        \mathbf{r}_i\times\mathbf{f}_i \\
+        \mathbf{f}_i
+    \end{bmatrix}.
+\end{equation}
+$$
+
+### Utilisateurs Python
+La lib est complètement bindée à Python, donc toutes les fonctionnalités C++ sont aussi en Python.
+Les noms des fonctions diffèrent de leur version C++ pour respecter la norme PEP8.
+Par example, la fonction `getRays()` devient `get_rays()`.
+
+J'ai aussi ajouté quelques bindings spécifiques pour faciliter son utilisation en Python.
+Lorsqu'une fonction contient un paramètre tel que `Eigen::Vector3d`, vous pouvez soit passé une liste `[1.,2.,3.]` soit un numpy array `numpy.array([1.,2.,3.])`.
+La fonction qui a besoin d'un `std::vector<Eigen::Vector3d>` peut être soit une liste de liste soit une liste de numpy array.
+Les numpy matrix ne sont pas bindées car peu utilisées.
+
 ## Exemples
-Vous pouvez trouver un exemple en C++ [ici]({{site.url}}/en/blog/wcl-example-cpp), et en Python [ici](https://github.com/stephane-caron/pymanoid/blob/master/examples/wrench_cone.py).
+Il y a un exemple C++ [ice](https://github.com/vsamy/wrench-cone-lib/blob/integration/apps/WrenchConeLibPerf/example.cpp), et un exemple Python [ici](https://github.com/vsamy/wrench-cone-lib/blob/integration/share/script/pyWrenchConeLibPerf/pyPerf.py) et [ici](https://github.com/stephane-caron/pymanoid/blob/master/examples/wrench_cone.py).

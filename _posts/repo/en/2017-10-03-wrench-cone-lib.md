@@ -101,5 +101,36 @@ $$
 
 Finally, the latter method return the $\mathcal{H}$-representation (Halfspaces representation) using a double-description method with cdd.
 
+## The lib in short
+### Compiler option
+First of all, it is important to know that there is a compiler option called `PLUCKER_NOTATION` if you want the matrices and vectors to be in Plücker notation.
+The wrench then becomes
+
+$$
+\begin{equation}
+    \mathbf{w}_O \overset{\text{def}}{=} 
+    \begin{bmatrix}
+        \mathbf{\tau}_O \\
+        \mathbf{f}
+    \end{bmatrix}
+    \overset{\text{def}}{=} 
+    \sum\limits_{\text{contact i}}
+    \begin{bmatrix}
+        \mathbf{r}_i\times\mathbf{f}_i \\
+        \mathbf{f}_i
+    \end{bmatrix}.
+\end{equation}
+$$
+
+### Python users
+The lib is completely bind to Python so all C++ functions exist in the Python side.
+The functions' name differ from their respective C++ version to respect the PEP8 norm.
+For example, the function `getRays()` becomes `get_rays()`.
+
+Also, i have added specific bindings to facilitate the use of the function.
+When a function has parameters such as `Eigen::Vector3d`, you can pass either a list `[1.,2.,3.]` or a numpy array `numpy.array([1.,2.,3.])`.
+Function that asks for a `std::vector<Eigen::Vector3d>` can be a list of list or a list of numpy array.
+I didn't bind numpy matrix because it is not very used.
+
 ## Examples
-You can find a C++ example [here]({{site.url}}/en/blog/wcl-example-cpp), and Python example [here](https://github.com/stephane-caron/pymanoid/blob/master/examples/wrench_cone.py).
+You can find a C++ example [here](https://github.com/vsamy/wrench-cone-lib/blob/integration/apps/WrenchConeLibPerf/example.cpp), and Python example [here](https://github.com/vsamy/wrench-cone-lib/blob/integration/share/script/pyWrenchConeLibPerf/pyPerf.py) and [here](https://github.com/stephane-caron/pymanoid/blob/master/examples/wrench_cone.py).
