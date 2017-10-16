@@ -4,17 +4,17 @@ lang: en
 ref: repo
 post_url: wrench_cone_lib
 title: wrench-cone-lib
-permalink: en/git-repository/wrench_cone_lib
+permalink: en/git-repositories/wrench_cone_lib
 ---
 
-This library is little tool for computing a wrench cone of several contact surfaces.
+This library computes a multi-contacts wrench cone.
 
-It can compute the rays (the vertex representation) of the polyhedron and can find the halfspaces (the halfspace representation) by using the double description algorithm.
+It can compute the rays (the $\mathcal{V}$-representation) of the polyhedral cone and can find the halfspaces (the $\mathcal{H}$-representation) by using the double description algorithm.
 
-This lib is based on Fukuda's [cdd](https://www.inf.ethz.ch/personal/fukudak/cdd_home/) lib and a simple threadsafe eigen wrapper [lib](https://github.com/vsamy/eigen-cdd)
+This lib is based on Fukuda's [cdd](https://www.inf.ethz.ch/personal/fukudak/cdd_home/) lib and [threadsafe wrapper of it](https://github.com/vsamy/eigen-cdd) for eigen.
 <!--more-->
 
-The definition of the **C**ontact **W**rench **C**one (CWC) has been written in [this paper](https://scaron.info/papers/journal/caron-tro-2016.pdf). Here, i re-explain what it is and give more details of how works the library.
+The definition of the **C**ontact **W**rench **C**one (CWC) has been written in [this paper](https://scaron.info/papers/journal/caron-tro-2016.pdf). Here, I re-explain what it is and give more details of how the library works.
 
 ## Definition
 The contact wrench at point $O$ is defined by
@@ -27,7 +27,7 @@ $$
         \mathbf{\tau}_O
     \end{bmatrix}
     \overset{\text{def}}{=} 
-    \sum\limits_{\text{contact i}}
+    \sum\limits_{\text{contact I}}
     \begin{bmatrix}
         \mathbf{f}_i \\
         \mathbf{r}_i\times\mathbf{f}_i
@@ -35,22 +35,22 @@ $$
 \end{equation}
 $$
 
-with $\mathbf{f}_i$ the force at contact $i$ and $\mathbf{r}_i = \overrightarrow{OC}$ is the translation vector from point $O$ to contact $C$ in the world coordinates.
+with $\mathbf{f}_i$ the force at contact $I$ and $\mathbf{r}_i = \overrightarrow{OC}$ is the translation vector from point $O$ to contact $C$ in the world coordinates.
 
-The contact wrench cone is its polyhedral representation where the force $\mathbf{f}_i$ is the friction cone.
+The contact wrench cone is the polyhedral representation **of friction constraints**. It is computed from the individual friction cones at contact points $\mathbf{p}_i$.
 
-As explain [here](https://scaron.info/teaching/contact-stability.html), 'if the CWC exists, the motion *may be* feasible'.
+Explained [here](https://scaron.info/teaching/contact-stability.html), 'if the CWC exists, the motion *may be* feasible'.
 
-## Fonctionning of the lib
-There are only two classes in the library. `ContactSurface` characterizes the surface involved in the computation of the CWC. `WrenchCone` computes the polyhedral representation of the contact wrench.
+## How the lib works
+There are only two classes in the library. `ContactSurface` characterizes the surfaces involved in the computation of the CWC. `WrenchCone` computes the polyhedral representation of the contact wrench.
 
 ### Contact surface
 A contact surface $S$ depends on several variables.
-It holds the translation and rotation information of the surface in the world frame coordinates, the static friction coefficient $\mu$, the number of generators of the friction cone $N_G$ and the number of points $N_p$ that belongs to it.
+It holds the translation and rotation information of the surface in the world frame coordinates, the static friction coefficient $\mu$, the number of generators of the friction cone $N_G$ and the number of points $N_p$ that belong to it.
 
 By convention, the normal of the surface is the z-axis of the surface frame.
 
-The linearization of the friction cone is done at run time and depends of the surface's variables. For a 3D friction cone, this number should be at least superior or equal to 3. The higher this number is, the better the cone approximation is.
+The linearization of the friction cone is done at run time and depends of the surface's variables. For a 3D friction cone, $N_G$ should be at least superior or equal to 3. The higher this number is, the better the cone approximation is.
 
 The functions `rectangularSurface()` (in C++) and `rectangular_surface()` (in python) allows to build a simple rectangular surface with 4 points (one at each corner).
 
@@ -58,7 +58,7 @@ By default, the static friction coefficient is 0.7 and the number of cone genera
 
 ### WrenchCone
 The WrenchCone class has only two functions `getRays()` and `getHalfspaces()` (in python `get_rays()` and `get_halfspaces()`).
-The former compute the rays (the polyhedral vertex representation) of the wrench cone.
+The former compute the rays (the $\mathcal{V}$-representation) of the wrench cone.
 
 The force at the contact along a cone generator is simply given by
 
@@ -88,7 +88,7 @@ G^S=
 \end{bmatrix}
 $$
 
-Letting $N_S$ be the number of surfaces, the vertex representation of the wrench cone is the concatenation of all the surfaces, thus, the function returns the matrix
+Letting $N_S$ be the number of surfaces, the $\mathcal{V}$-representation of the wrench cone is the concatenation of all the surfaces, thus, the function returns the matrix
 
 $$
 \begin{equation}
@@ -99,7 +99,7 @@ G=
 \end{equation}
 $$
 
-Finally, the latter method return the $\mathcal{H}$-representation (Halfspaces representation) using a double-description method with cdd.
+Finally, the latter method return the $\mathcal{H}$-representation using a double-description method with cdd.
 
 ## The lib in short
 ### Compiler option
@@ -114,7 +114,7 @@ $$
         \mathbf{f}
     \end{bmatrix}
     \overset{\text{def}}{=} 
-    \sum\limits_{\text{contact i}}
+    \sum\limits_{\text{contact I}}
     \begin{bmatrix}
         \mathbf{r}_i\times\mathbf{f}_i \\
         \mathbf{f}_i
@@ -123,11 +123,11 @@ $$
 $$
 
 ### Python users
-The lib is completely bind to Python so all C++ functions exist in the Python side.
-The functions' name differ from their respective C++ version to respect the PEP8 norm.
+The lib is completely usable from Python so all C++ functions exist in the Python side.
+The function names differ from their respective C++ version to respect the PEP8 norm.
 For example, the function `getRays()` becomes `get_rays()`.
 
-Also, i have added specific bindings to facilitate the use of the function.
+Also, I have added specific bindings to facilitate the use of the function.
 When a function has parameters such as `Eigen::Vector3d`, you can pass either a list `[1.,2.,3.]` or a numpy array `numpy.array([1.,2.,3.])`.
 Function that asks for a `std::vector<Eigen::Vector3d>` can be a list of list or a list of numpy array.
 I didn't bind numpy matrix because it is not very used.

@@ -49,8 +49,8 @@ menu-lang:
       name: Blog
       url: "en/blog"
     repo:
-      name: Git repository
-      url: "en/git-repository"
+      name: Git repositories
+      url: "en/git-repositories"
   fr:
     home:
       name: Accueil
@@ -62,18 +62,5 @@ menu-lang:
       name: Blog
       url: "fr/blog"
     repo:
-      name: Dépôt git
-      url: "fr/git-repository"
-  jp:
-    home:
-      name: ホーム
-      url: "jp/home"
-    about:
-      name: 私について
-      url: "jp/about"
-    blog:
-      name: 論文
-      url: "jp/papers"
-    repo:
-      name: ギット・リポジトリ
-      url: "jp/git-repository"
+      name: Dépôts git
+      url: "fr/git-repositories"
