@@ -88,36 +88,32 @@ Finalement, il y a deux fonctions de coût i) un coût en trajectoire $\mathbf{z
 Tout d'abord, les headers
 
 ```python
-from minieigen import *
-import copra
+import numpy as np
+import pyCopra as copra
 ```
 
 puis il faut créer le système
 
 ```python
-A = Matrix3d.Identity
+A = np.identity(3)
 A[0, 1] = T
 A[0, 2] = T * T / 2.
 A[1, 2] = T
 
-B = Vector3d(T* T * T / 6., T * T / 2, T)
+B = np.array([T* T * T / 6., T * T / 2, T])
 
-d = Vector3d.Zero
-x_0 = Vector3d.Zero
+d = np.zeros((3,))
+x_0 = np.zeros((3,))
 ps = copra.NewPreviewSystem(A, B, d, x_0, nrStep)
 ```
 
 Puis on créé les contraintes sur le ZMP
 
 ```python
-E2 = MatrixXd.Zero(1, 3)
-E2[0, 0] = 1
-E2[0, 0] = h_CoM / g
+E2 = np.array([[1., 0., -h_CoM / g]])
 E1 = -E2
-f1 = MatrixXd.Zero(1, 1)
-f2 = MatrixXd.Zero(1, 1)
-f1[0, 0] << z_min 
-f2[0, 0] << z_max
+f1 = np.array([[z_min]])
+f2 = np.array([[z_max]])
 
 traj_constr_1 = copra.NewTrajectoryConstraint(E1, f1)
 traj_constr_2 = copra.NewTrajectoryConstraint(E2, f2)
@@ -126,19 +122,14 @@ traj_constr_2 = copra.NewTrajectoryConstraint(E2, f2)
 On construit les fonctions coût
 
 ```python
-M = MatrixXd.Zero(1, 3)
-M[0, 0] = 1
-M[0, 0] = h_CoM / g
+M = np.array([[1., 0., -h_CoM / g]])
 
 traj_cost = copra.NewTrajectoryCost(M, -z_ref);
 traj_cost.weight(Q);
 traj_cost.autoSpan(); # Make the dimension consistent (z_ref size is nrSteps)
 
-Eigen::<double, 1, 1> N, p;
-N = MatrixXd(1, 1)
-p = VectorXd(1)
-N[0, 0] = 1;
-p[0] = 0;
+N = np.array([[1.]])
+p = np.array([0.])
 
 control_cost = copra.ControlCost(N, -p);
 control_cost.weight(R);
@@ -148,10 +139,10 @@ On peut alors créer le copra et résoudre
 
 ```python
 controller = copra.LMPC(ps)
-controller.addConstraint(traj_constr_1)
-controller.addConstraint(traj_constr_2)
-controller.addCost(traj_cost)
-controller.addCost(control_cost)
+controller.add_constraint(traj_constr_1)
+controller.add_constraint(traj_constr_2)
+controller.add_cost(traj_cost)
+controller.add_cost(control_cost)
 
 controller.solve();
 ```
@@ -161,10 +152,10 @@ Et enfin, récupérer les résultats
 ```python
 trajectory = controller.trajectory()
 jerk = controller.control()
-com_pos = VectorXd(nrSteps)
-com_vel = VectorXd(nrSteps)
-com_acc = VectorXd(nrSteps)
-zmp_pos = VectorXd(nrSteps)
+com_pos = np.array((nrSteps,))
+com_vel = np.array((nrSteps,))
+com_acc = np.array((nrSteps,))
+zmp_pos = np.array((nrSteps,))
 for i in xrange(nr_steps):
     com_pos[i] = trajectory[3 * i]
     com_vel[2 * i] = trajectory[3 * i + 1]
