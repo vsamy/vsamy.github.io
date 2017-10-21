@@ -7,61 +7,60 @@ title: pygen-converter
 permalink: fr/git-repositories/pygen_converter
 ---
 
-Pygen-converter est un outils permettant une conversion implicite entre la librairie C++ Eigen et la librairie Python Numpy.
-C'est une lib avec uniquement des headers qui offre tous les bindings pour les types standards de Eigen (*e.g.* `MatrixXd`, `Vector3i`, `ArrayXXf`, ...) et non-standard ou définie par l'utilisateur.
+pygen-converter est un outils permettant une conversion implicite entre la librairie C++ Eigen et la librairie Python Numpy.
+C'est une lib avec uniquement des headers qui offre tous les bindings pour les types standards de Eigen (*e.g.* **MatrixXd**, **Vector3i**, **ArrayXXf**, ...) et non-standard ou définie par l'utilisateur.
 <!--more-->
 
 ## De quoi c'est composé?
 Il n'y a qu'un seul header `<pygen/converters.h>` et il est uniquement composé de fonctions et structures templatées.
 
-### Structures
+### Les structures
 Les structures parlent d'elles-mêmes.
 `python_list_to_eigen_vector`, `python_list_to_eigen_matrix` permet la conversion de liste Python vers des vecteurs/matrices Eigen.
 `numpy_array_to_eigen_vector`, `numpy_array_to_eigen_matrix` permet la conversion de Numpy ndarray vers des vecteurs/matrices Eigen.
-`eigen_vector_to_numpy_array`, `eigen_matrix_to_numpy_array` allows the conversion from Eigen vectors/matrices to Numpy ndarray.
-All of these templated structures await for an Eigen matrix or array type. 
-These types are of the form `Eigen::Matrix<Scalar, _rows, _cols>` or `Eigen::Array<Scalar, _rows, _cols>` where `Scalar` is a basic type (int, std::complex<float>, etc..), `_rows` is either the number of rows or Eigen::Dynamic for dynamic-sized rows and `_cols` is either the number of columns or Eigen::Dynamic for dynamic-sized columns.
+`eigen_vector_to_numpy_array`, `eigen_matrix_to_numpy_array` permet la conversion des vecteurs/matrices Eigen vers des Numpy ndarray.
+Toutes ces structures attendent comme typename un type Eigen Matrix ou Array c'est-à-dire des **Eigen::Matrix\<Scalar, _rows, _cols\>** et **Eigen::Array\<Scalar, _rows, _cols\>** où **Scalar** est un type de base (*int*, *std::complex\<float\>*, etc..), **_rows** vaut le nombre de lignes ou **Eigen::Dynamic** pour les matrices à lignes dynamiques et **_cols** vaut le nombre de colonnes ou **Eigen::Dynamic** pour matrices à colonnes dynamiques.
 
-### Functions
-The functions are also self-explanatory. 
-`convertAllVector`, `convertAllRowVector`, `convertAllMatrix` converts all Eigen global (row-)vector, matrix typedefs.
-`convertAllRowArray`, `convertAllColumnArray`, `convertAllArray` converts all Eigen global row-Array, col-Array, Array typedefs.
-These templated functions need an `Scalar` type (int, std::complex<float>, etc..).
+### Les fonctions
+Les fonctions parlent aussi d'elles-mêmes.
+`convertAllVector`, `convertAllRowVector`, `convertAllMatrix` convertissent les types globaux des matrices, des vecteurs et des vecteurs lignes de Eigen.
+`convertAllRowArray`, `convertAllColumnArray`, `convertAllArray` convertissent la même chose mais pour les Eigen Array.
+Les fonctions attendent un **Scalar** comme typename (*int*, *std::complex\<float\>*, etc..).
 
-`convertVector` and `convertMatrix` are two other functions that allows to handle user-defined Matrix and Vectors.
-You need to provide an `Eigen::Matrix<Scalar, _rows, _cols>` or `Eigen::Array<Scalar, _rows, _cols>` as typename.
+`convertVector` et `convertMatrix` sont deux autres fonctions qui permettent de gérer les types utilisateurs (non-standard à Eigen)
+Il faut donner comme typename **Eigen::Matrix\<Scalar, _rows, _cols\>** ou **Eigen::Array\<Scalar, _rows, _cols\>**.
 
-### Easy conversion
-There is an enum struct called `Converters` along a function called `convert` that can be used to handle any kind of conversion for you.
-The structure is made of bitflag with the following flags:
- * None (No conversion)
- * Matrix (Convert all global typedefs matrices)
- * Vector (Convert all global typedefs vectors)
- * RowVector (Convert all global typedefs row vectors)
- * Array (Convert all global typedefs arrays)
- * ColumnArray (Convert all global typedefs column arrays)
- * RowArray (Convert all global typedefs row arrays)
- * NoStandard (Convert non standard Vector6, Matrix6, Array6)
+### Conversion simplifiée
+Il y a une enum struct appelée `Converters` qui peut être utilisé avec la fonction `convert` pour gérer plusieurs types de conversions.
+La structure est composée de bitflag qui sont :
+ * None (Pas de  conversion)
+ * Matrix (Conversion de tous les types matrices)
+ * Vector (Conversion de tous les types vecteurs-colonne)
+ * RowVector (Conversion de tous les types vecteurs-ligne)
+ * Array (Conversion de tous les types de tableau)
+ * ColumnArray (Conversion de tous les types de tableau-colonne)
+ * RowArray (Conversion de tous les types de tableau-ligne)
+ * NoStandard (Conversion de types non standard Vector6, Matrix6, Array6)
  * NoRowMatrixConversion (Matrix \| Vector)
  * AllMatrixConversion (Matrix \| Vector \| RowVector)
  * NoRowArrayConversion (Array \| ColumnArray)
  * AllArrayConversion (Array \| ColumnArray \| RowArray)
  * All (AllMatrixConversion \| AllArrayConversion \| NoStandard)
 
-For example, to have all Matrix and Vector Conversion of Scalar `double` you just need to call
+Par exemple, pour obtenir les conversions de toutes les matrices et vecteurs de type **double**, il faut juste appeler
 
 ```c++
 pygen::convert<double>(pygen::Converters::NoRowMatrixConversion);
 ```
 
-In the case you don't want Python list to be convertible into an Eigen type, call
+Dans le cas où la conversion des liste Python vers un type Eigen n'est pas souhaitée, il faut appeler
 
 ```c++
 pygen::convert<double>(pygen::Converters::NoRowMatrixConversion, false);
 ```
 
-## How-to
-The minimal code to bind a C++ library is as follow
+## Utilisation
+Le code minimal pour binder une librairie C++ est le suivant
 
 ```c++
 #include <boost/python.hpp>
@@ -76,24 +75,24 @@ BOOST_PYTHON_MODULE(libName)
     Py_Initialize();
     np::initialize();
 
-    // Include binding code here
+    // Code pour le binding
 }
 ```
 
-The easiest way to add conversion is to directly use the `convert` method has above. But there is some tricks to be aware of.
+La façon la plus simple d'ajouter des conversion et d'utiliser directement la méthode `convert` comme ci-dessus. Il y a cependant quelques difficultés qu'il faut connaitre.
 
-### User-defined functions
-To allow user-defined conversion you can call
+### Conversions spécifiques
+Pour ajouter des conversions spécifiques, il suffit d'appeler
 
 ```c++
 pygen::convertMatrix<Eigen::Matrix<double, 5, 4> >();
 pygen::convertVector<Eigen::Matrix<double, 5, 1> >(false);
 ```
 
-You can pass a boolean as argument if you need to allow Python list conversion (default is `true`).
+Il est possible de passer un booléen comme argument pour activer ou non la conversion des listes Python vers des type Eigen (*true* par défaut).
 
-### Binding structures
-Let's say you need to bind a C++ structure that involves Eigen type as
+### Binding des structures
+Admettons qu'il faille binder une structure C++ contenant des types Eigen comme celle-ci
 
 ```c++
 struct StructToBind {
@@ -103,7 +102,7 @@ struct StructToBind {
 };
 ```
 
-Let's create the bindings.
+Pour créer les bindings :
 
 ```c++
 pygen::convertMatrix(Eigen::MatrixXd);
@@ -112,20 +111,21 @@ pygen::convertVector(Eigen::Vector3f);
 py::class_<StructToBind>("StructToBind")
     .def_readwrite("val", &ToBind::val)
     .add_property("mat", 
-        py::make_getter(&ToBind::mat,  py::return_value_policy<py::copy_non_const_reference>()), 
+        py::make_getter(&ToBind::mat, 
+            py::return_value_policy<py::copy_non_const_reference>())
         py::make_setter(&ToBind::mat))
     .add_property("vac", py::make_getter(&ToBind::vec, 
-        py::return_value_policy<py::copy_non_const_reference>()), 
+        py::return_value_policy<py::copy_non_const_reference>())
         py::make_setter(&ToBind::vec));
 ```
 
-### Binding specific functions
-There are two types of functions that needs to be deal with.
-The functions that return `const&` of Eigen type and the functions that involve reference of Eigen type.
+### Binding de fonctions spécifiques
+Il y a deux types de fonctions qui posent problème lors du binding.
+Les fonction qui retourne une **const&** de type Eigen et celles qui contiennent des références vers des types Eigen.
 
-#### Handling const& return type
-Function that returns a `const&` of an Eigen type needs to be bind with a specific return policy.
-Let's create a simple useless class
+#### Gérer les retours par const&
+Les fonctions qui retournent un **const&** de type Eigen ont besoin d'être bindées avec une politique particulière.
+Voici une class complètement inutile à binder.
 
 ```c++
 class ClassToBind {
@@ -150,7 +150,7 @@ private:
 };
 ```
 
-The bindings become
+Le binding devient
 
 ```c++
 py::class_<ClassToBind>("ClassToBind", py::init<>())
@@ -158,12 +158,12 @@ py::class_<ClassToBind>("ClassToBind", py::init<>())
         py::return_value_policy<py::copy_const_reference>());
 ```
 
-#### Handling functions with reference to Eigen type
-Functions that return a reference is a real problem for the lib. 
-You need to wrap these.
-For function like `getMatRef`, the best to do is to add the property with getter and setter as for the structure above. This way, the user can not only get the matrix but also set it.
+#### Gérer les fonctions contenant des références de type Eigen
+Les fonctions qui retournent une référence est un réel problème.
+Il faut les wrapper.
+Pour les fonctions telles que `getMatRef`, la meilleure façon est de d'ajouter un getter et un setter comme. De cette façon, l'utilisateur peut récupérer la matrice via le getter et la modifier via le setter.
 
-To handle `generateRandomMat` you need to wrap it.
+Pour gérer `generateRandomMat` il faut wrapper la class.
 
 ```c++
 class WrapCTP : public ClassToBind {
@@ -180,7 +180,7 @@ public:
 };
 ```
 
-and then bind it with
+et la binder avec 
 
 ```c++
 py::class_<WrapCTP, py::bases<ClassToBind> >("ClassToBind", py::init<>())
@@ -193,16 +193,29 @@ py::class_<WrapCTP, py::bases<ClassToBind> >("ClassToBind", py::init<>())
     .def("set_mat", &WrapCTP::wrapSetMat);
 ```
 
-## Pros and cons
-This lib handles all conversion Numpy<->Eigen in a very simple way.
-For the user, it is quite handful to use this type of conversion.
-The binding is little more complex though.
+Si `generateRandomMat` est une méthode statique, alors seule la fonction a besoin d'être wrappée.
 
-The main disadvantage of this method is that it always perform a copy.
-This is bad for performance and does not facilitate the bindings since you can pass parameters by reference.
+```c++
+static Eigen::MatrixXd wrapGenerateRandomMat(Eigen::MatrixXd mat)
+{
+    CTB::generateRandomMat(mat);
+    return mat;
+}
 
-On the other hand it offers the possibility for Python users to directly used the commonly used Numpy library.
+// In the cpp bindings
+py::class_<ClassToBind>("ClassToBind")
+    .def("generate_random_matrix", py::make_function(wrapGenerateRandomMat));
+```
 
-If you want to have the possibility to pass parameters by reference you should use [minieigen](https://github.com/eudoxos/minieigen).
-It offers the possibility to access directly Eigen class in Python.
-The drawback of minieigen is to have another lib to deals with and Python user's generally prefer Numpy.
+## Pours et contres
+La lib gère toutes les conversions Numpy<->Eigen de manière très simple.
+Du point de bue de l'utilisateur, c'est très pratique d'avoir ce genre de conversions automatiques. Les bindings sont par contre plus durs à mettre en place.
+
+Le plus gros désaventage et qu'elle fait des copies.
+De ce fait, les performances en prennent un coup et il n'y a pas d'accès direct aux matrices Eigen.
+
+D'un autre côté, elle offre la possibilité aux utilisateurs Python d'utiliser directement la library Numpy.
+
+Pour parer aux problèmes de performances et de gestion des références, il est préférable d'utiliser [minieigen](https://github.com/eudoxos/minieigen).
+Elle permet l'accès directe aux matrices Eigen dans Python.
+La contrepartie est la nécessité d'utiliser une nouvelle librairie. Les utilisateurs Python ont généralement une meilleure connaissance de la librairie Numpy.
