@@ -199,7 +199,7 @@ note that if `generateRandomMat` is a static method then you just need to wrap t
 ```c++
 static Eigen::MatrixXd wrapGenerateRandomMat(Eigen::MatrixXd mat)
 {
-    CTB::generateRandomMat(mat);
+    ClassToBind::generateRandomMat(mat);
     return mat;
 }
 

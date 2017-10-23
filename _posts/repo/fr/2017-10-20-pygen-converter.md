@@ -198,7 +198,7 @@ Si `generateRandomMat` est une méthode statique, alors seule la fonction a beso
 ```c++
 static Eigen::MatrixXd wrapGenerateRandomMat(Eigen::MatrixXd mat)
 {
-    CTB::generateRandomMat(mat);
+    ClassToBind::generateRandomMat(mat);
     return mat;
 }
 
