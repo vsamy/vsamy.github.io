@@ -113,10 +113,11 @@ py::class_<StructToBind>("StructToBind")
     .def_readwrite("val", &ToBind::val)
     .add_property("mat", 
         py::make_getter(&ToBind::mat, 
-            py::return_value_policy<py::copy_non_const_reference>())
+            py::return_value_policy<py::copy_non_const_reference>()),
         py::make_setter(&ToBind::mat))
-    .add_property("vac", py::make_getter(&ToBind::vec, 
-        py::return_value_policy<py::copy_non_const_reference>())
+    .add_property("vec", 
+        py::make_getter(&ToBind::vec, 
+            py::return_value_policy<py::copy_non_const_reference>()),
         py::make_setter(&ToBind::vec));
 ```
 
