@@ -5,7 +5,11 @@
   <meta charset='utf-8'>
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width,maximum-scale=2">
-  <meta name="description" content="{{ site.title | default: site.github.repository_name }} : {{ site.description | default: site.github.project_tagline }}">
+  {% if post.title %}  
+    <meta name="description" content="{{ post.title }} : {{ post.excerpt | strip_html }}">
+  {% else %}
+    <meta name="description" content="{{ page.ref }} : {{ page.content | strip_html | truncatewords:20 }}">
+  {% endif %}
 
   <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css">
