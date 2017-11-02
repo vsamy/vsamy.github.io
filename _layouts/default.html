@@ -8,9 +8,9 @@
   {% if page.title %}
     <title>{{ page.title }}</title>
     <meta name="description" content="{{ page.excerpt | strip_html }}">
-  {% else %}
+  <!-- {% else %}
     <title>{{ page.ref }}</title>
-    <meta name="description" content="{{ page.content | strip_html | truncatewords:50 }}">
+    <meta name="description" content="{{ page.content | strip_html | truncatewords:50 }}"> -->
   {% endif %}
 
   <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
