@@ -248,8 +248,8 @@ py::class_<WrapSTB>("StructToBind", py::no_init)
  .def_readonly("vec", &WrapSTB::vec,    
     py::return_value_policy<py::copy_non_const_reference>())
  .def("set_vec", &WrapSTB::set_vec)
- .def("set_vec", &WrapSTB::set_v_slice)
- .def("set_vec", &WrapSTB::set_v_splice_from_val);
+ .def("set_vec", &WrapSTB::set_vec_slice)
+ .def("set_vec", &WrapSTB::set_vec_splice_from_val);
 ```
 
 ## Pros and cons
