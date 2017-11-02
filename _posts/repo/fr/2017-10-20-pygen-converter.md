@@ -207,6 +207,50 @@ py::class_<ClassToBind>("ClassToBind")
     .def("generate_random_matrix", py::make_function(wrapGenerateRandomMat));
 ```
 
+### Erreur commune et slicing
+L'utilisateur Python va peut-être essayé de modifier les valeurs internes du vecteur dans *StructToBind*. Hélas, ceci ne va rien modifier ce qui est contre-intuitif.
+
+```ipython
+In [2]: a.vec[1]
+Out[2]: 5.0
+
+In [3]: a.vec[1] = 8
+
+In [4]: a.vec[1]
+Out[4]: 5.0
+```
+
+C'est dû au fait que seule des copy passent entre python et c++. Le 3ème appel donne 1) Copie et converti a.vec en numpy ndarray, 2) set la 1ère valeur du vecteur copié à 8.
+
+Pour permettre le slicing, il faut procurer des functions spécifiques
+
+```c++
+struct  WrapSTB : public StructToBind {
+void set_vec(const Eigen::VectorXd& nv) {
+    vec = nv;
+}
+
+void set_vec_slice(int start, Eigen::VectorXd nv) {
+    if (nv.size() > vec.size() - start)
+        throw std::runtime_error("Bad dimension !!!!");
+    vec.segment(start, nv.size()) = nv;
+}
+
+void set_vec_splice_from_val(int index, double val) {
+    if (index >= vec.size())
+        throw std::domain_error("out of bounds");
+    vec(index) = val;
+}
+};
+
+py::class_<WrapSTB>("StructToBind", py::no_init)
+ .def_readonly("vec", &WrapSTB::vec,    
+    py::return_value_policy<py::copy_non_const_reference>())
+ .def("set_vec", &WrapSTB::set_vec)
+ .def("set_vec", &WrapSTB::set_v_slice)
+ .def("set_vec", &WrapSTB::set_v_splice_from_val);
+```
+
 ## Pours et contres
 La lib gère toutes les conversions Numpy<->Eigen de manière très simple.
 Du point de bue de l'utilisateur, c'est très pratique d'avoir ce genre de conversions automatiques. Les bindings sont par contre plus durs à mettre en place.
