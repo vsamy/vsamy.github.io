@@ -2,28 +2,71 @@ tab0:
   header: Current work
   content:
     - date: since 2014
-      title: Haptic covers for humanoid and safe human aware falling strategies
+      title: Humanoid fall control by postural reshaping and adaptive compliance
       text: > 
-              PhD. thesis in humanoid robotics at the IDH team, Lirmm.
-              This work aims to reduce damages taken by humanoid robots when a fall occurs
-              This is done in two main steps. The robot is controlled during the fall (to prepare the impact), 
-              then an adaptive control is used to comply to the impact.
+              This thesis deals with the problem of humanoid falling with a decoupled strategy consisting of a pre-impact and a post-impact stages. 
+              In the pre-impact stage, geometrical reasoning allows the robot to choose appropriate impact points in the surrounding environment 
+              and to adopt a posture to reach them while avoiding impact singularities and preparing for the post-impact. 
+              The post-impact stage uses a quadratic program controller (QP) that adapts on-line the joint proportional-derivative (PD) gains 
+              to make the robot compliant, i.e. to absorb post-impact dynamics, which lowers possible damage risks. 
+              We propose a new approach incorporating the stiffness and damping gains directly as decision variables in the QP 
+              along with the usually-considered variables that are the joint accelerations and contact forces. 
+              Finally, to overcome the limitations of the local QP approach, we combine the method with a Model Predictive Controller (MPC) 
+              allowing for a preview on a time-horizon based on a reduced model.
+              Several experiments on the real humanoid robot HRP-4 or in a full-dynamics simulator are presented 
+              and discussed to illustrate and validate each part of the thesis.
 
 tab1:
   header: Publications
   content:
+    - date: 2018
+      title: Active shock absorber control in humanoid robot falls with nonlinear optimization on a reduced dynamics model
+      text: >
+              We propose a reduced-model-based analytic approach to active shock absorption by a falling humanoid robot at impact. 
+              We model the segment between the contact point at impact and the impacting limb extremity attached to the torso or waist of the humanoid robot 
+              as a one degree-of-freedom linear mass-spring-damper system. 
+              By mapping the joint angle limits and torque limits of the joints in the impacting limb to a corresponding position limit and force limit in the reduced model, 
+              we formulate a nonlinear optimization problem to find an admissible pair of parameters of the reduced model (stiffness, damping) 
+              that prevents the model from violating the constraints before reaching a steady state rest. 
+              The nonlinear constraints are analytically derived using symbolic computation tools 
+              and then numerically solved with off-the-shelf nonlinear optimization solver. 
+              The reduced model trajectories are then mapped back on the full body of the humanoid robot and illustrated on the HRP-4 robot in simulation. Submitted to ICRA 2018.
+      link: https://hal.archives-ouvertes.fr/hal-01590677/document
+    - date: 2017
+      title: Post-Impact Adaptive Compliance for Humanoid Falls Using Predictive Control of a Reduced Model 
+      text: >
+              We consider control of a humanoid robot in active compliance just after the impact consecutive to a fall. 
+              The goal of this post-impact braking is to absorb undesired linear momentum accumulated during the fall, 
+              using a limited supply of time and actuation power. 
+              The gist of our method is an optimal distribution of undesired momentum between the robot's hand and foot contact points, 
+              followed by the parallel resolution of Linear Model Predictive Control (LMPC) at each contact. 
+              This distribution is made possible thanks to \emph{torque-limited friction polytopes}, 
+              an extension of friction cones that takes actuation limits into account. 
+              Individual LMPC results are finally combined back into a feasible CoM trajectory sent to the robot's whole-body controller. 
+              We validate the solution in full-body dynamics simulation of an HRP-4 humanoid falling on a wall. Humanoids 2017.
+      link: https://hal.archives-ouvertes.fr/hal-01569819v3/document
     - date: 2017
       title: QP-based Adaptive-Gains Compliance Control in Humanoid Falls
       text: >
-              Submitted to the conference ICRA in 2017. This work gives a method for handling safe complex falls.
-              The control cqn hqndle a fall in a cluttered environment with front, back and side fall.
-              To comply to the impact an adaptive controller that can tune motor's gains has been developed.
+              We address the problem of humanoid falling with a decoupled strategy consisting of a pre-impact and a post- impact stage. 
+              In the pre-impact stage, geometrical reasoning allows the robot to choose appropriate impact points in the surrounding environment 
+              and to adopt a posture to reach them while avoiding impact-singularities and preparing for the post-impact. 
+              The surrounding environment can be unstructured and may contain cluttered obstacles. 
+              The post-impact stage uses a quadratic program controller that adapts on-line the joint proportional-derivative (PD) gains to make the robot compliant 
+              –to absorb impact and post-impact dynamics, which lowers possible damage risks. 
+              This is done by a new approach incor- porating the stiffness and damping gains directly as decision variables in the QP 
+              along with the usually-considered variables of joint accelerations and contact forces. 
+              Constraints of the QP prevent the motors from reaching their torque limits during the fall. 
+              Several experiments on the humanoid robot HRP-4 in a full-dynamics simulator are presented and discussed. ICRA 2017.
       link: https://hal.archives-ouvertes.fr/hal-01365108v2/document
     - date: 2015
       title: Falls control using posture reshaping and active compliance
       text: >
-              Submitted to the conference humanoids in 2015.
-              The works gives a simple method that can handle front and back fall and the postures in which the robot should not be when impacting the ground.
+              We address the problem of humanoid falls when they are unavoidable. We propose a control strategy that combines two behaviors: 
+              i) closed-loop posture reshaping – during the falling phase, which allows best impact absorption from a predeﬁned taxonomy, 
+              coupled with ii) an active compliance through instant PD gains reduction, instead of shutting-off the actuators 
+              or instead of high-gains control with additional implements as previously proposed by other works. 
+              We perform several simulations to assess our strategy and made experimental trials on the HRP-4 humanoid robot. Humanoids 2015.
       link: http://comanoid.cnrs.fr/publications_files/2015/Humanoids/T5OC-4.pdf
 
 tab2:
@@ -47,17 +90,17 @@ tab2:
 tab3:
   header: Education
   content:
-    - date: 2015 - now
+    - date: now - 2015
       title: PhD. student in humanoid robotics (Lirmm)
       text: Haptic covers for humanoid and safe human aware falling strategies
-    - date: 2013 - 2014
+    - date: 2014 - 2013
       title: Master 2 in robotics (ENSAM Paris)
       text: Master in robotics « Advanced Systems and Robotics » in cohabilitation with UPMC, ENSTA and ENS Cachan
-    - date: 2008 - 2013
+    - date: 2013 - 2008
       title: Engineering degree « Design and Mechanical Engineering » (INSA Lyon)
       text: > 
               Mechanical & Design deparment.
               Integrated preparatory class – section « ASINSA » which is linked with Asian culture.
-    - date: 2011 - 2012
+    - date: 2012 - 2011
       title: Exchange year (神戸大学)
       text: Done at the mechanical department of Kobe university.

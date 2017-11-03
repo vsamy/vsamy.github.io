@@ -2,41 +2,92 @@ tab0:
   header: Travail actuel
   content:
     - date: depuis 2014
-      title: Carapace haptique compliante pour robots humanoïdes et stratégies de chutes sécurisées en présence humaine
+      title: Commande de chute pour robots humanoïdes par reconfiguration posturale et compliance adaptative
       text: > 
-              Thèse en robotique humanoïde dans la team IDH, Lirmm. 
-              Le travail cherche à diminuer les sur un robot humanoïde dans le cas d'une chute.
-              Il est effectué en deux temps. Le contrôle du robot pendant la chute (pour le préparer à l'impact), 
-              puis un contrôle adaptatif est effectué pour complier à l'impact.
+              Cette thèse traite du problème de la chute de robots humanoïdes.
+              L'étude consiste à découpler la stratégie de chute en une phase de pré-impact et une phase de post-impact.
+              Dans la première, une solution géométrique permet au robot de choisir des points d'impact dans un environnement encombré. 
+              Le robot réadapte sa posture tout en évitant les singularités de chute et en préparant le seconde phase. 
+              La phase de post-impact utilise une commande par Programmation Quadratique (QP) qui permet d'adapter 
+              les gains Proportionnels-Dérivés (PD) des moteurs en ligne, afin d'atteindre une compliance dans les articulations et amortir activement le choc.
+              L'approche consiste à incorporer les gains de raideur et d'amortissement dans le vecteur d'optimisation du QP 
+              avec les variables habituelles que sont l'accélération articulaire et les forces de contact. 
+              Enfin, pour compléter cette approche locale et en augmenter les performances, une commande de modèle prédictif 
+              sur un modèle simplifié du robot et son évolution sur une fenêtre glissante de temps est incorporée à la méthode.
+              Plusieurs expériences et simulations sont présentées pour valider les différentes parties de cette thèse.    
 
 tab1:
   header: Articles
   content:
+    - date: 2018
+      title: Active shock absorber control in humanoid robot falls with nonlinear optimization on a reduced dynamics model
+      text: >
+              We propose a reduced-model-based analytic approach to active shock absorption by a falling humanoid robot at impact. 
+              We model the segment between the contact point at impact and the impacting limb extremity attached to the torso or waist of the humanoid robot 
+              as a one degree-of-freedom linear mass-spring-damper system. 
+              By mapping the joint angle limits and torque limits of the joints in the impacting limb to a corresponding position limit and force limit in the reduced model, 
+              we formulate a nonlinear optimization problem to find an admissible pair of parameters of the reduced model (stiffness, damping) 
+              that prevents the model from violating the constraints before reaching a steady state rest. 
+              The nonlinear constraints are analytically derived using symbolic computation tools 
+              and then numerically solved with off-the-shelf nonlinear optimization solver. 
+              The reduced model trajectories are then mapped back on the full body of the humanoid robot and illustrated on the HRP-4 robot in simulation. Submitted to ICRA 2018.
+      link: https://hal.archives-ouvertes.fr/hal-01590677/document
+    - date: 2017
+      title: Post-Impact Adaptive Compliance for Humanoid Falls Using Predictive Control of a Reduced Model 
+      text: >
+              We consider control of a humanoid robot in active compliance just after the impact consecutive to a fall. 
+              The goal of this post-impact braking is to absorb undesired linear momentum accumulated during the fall, 
+              using a limited supply of time and actuation power. 
+              The gist of our method is an optimal distribution of undesired momentum between the robot's hand and foot contact points, 
+              followed by the parallel resolution of Linear Model Predictive Control (LMPC) at each contact. 
+              This distribution is made possible thanks to \emph{torque-limited friction polytopes}, 
+              an extension of friction cones that takes actuation limits into account. 
+              Individual LMPC results are finally combined back into a feasible CoM trajectory sent to the robot's whole-body controller. 
+              We validate the solution in full-body dynamics simulation of an HRP-4 humanoid falling on a wall. Humanoids 2017.
+      link: https://hal.archives-ouvertes.fr/hal-01569819v3/document
     - date: 2017
       title: QP-based Adaptive-Gains Compliance Control in Humanoid Falls
       text: >
-              Soumis à la conférence ICRA de 2017. Le travail propose une méthode de résolution de chutes complexes.
-              Le contrôle est valable dans un environnement encombré, avec tous types chutes (en avant, en arrière, latérales).
-              Un contrôle adaptif capable de modifier les gains des moteurs en ligne a été développé.
+              We address the problem of humanoid falling with a decoupled strategy consisting of a pre-impact and a post- impact stage. 
+              In the pre-impact stage, geometrical reasoning allows the robot to choose appropriate impact points in the surrounding environment 
+              and to adopt a posture to reach them while avoiding impact-singularities and preparing for the post-impact. 
+              The surrounding environment can be unstructured and may contain cluttered obstacles. 
+              The post-impact stage uses a quadratic program controller that adapts on-line the joint proportional-derivative (PD) gains to make the robot compliant 
+              –to absorb impact and post-impact dynamics, which lowers possible damage risks. 
+              This is done by a new approach incor- porating the stiffness and damping gains directly as decision variables in the QP 
+              along with the usually-considered variables of joint accelerations and contact forces. 
+              Constraints of the QP prevent the motors from reaching their torque limits during the fall. 
+              Several experiments on the humanoid robot HRP-4 in a full-dynamics simulator are presented and discussed. ICRA 2017.
       link: https://hal.archives-ouvertes.fr/hal-01365108v2/document
     - date: 2015
       title: Falls control using posture reshaping and active compliance
       text: >
-              Soumis à la conférence humanoids de 2015. 
-              Le travail présente une méthode simple de résolution de chutes avant et arrière et les conditions de non danger pour la structure du robot.
+              We address the problem of humanoid falls when they are unavoidable. We propose a control strategy that combines two behaviors: 
+              i) closed-loop posture reshaping – during the falling phase, which allows best impact absorption from a predeﬁned taxonomy, 
+              coupled with ii) an active compliance through instant PD gains reduction, instead of shutting-off the actuators 
+              or instead of high-gains control with additional implements as previously proposed by other works. 
+              We perform several simulations to assess our strategy and made experimental trials on the HRP-4 humanoid robot. Humanoids 2015.
       link: http://comanoid.cnrs.fr/publications_files/2015/Humanoids/T5OC-4.pdf
     - date: 2014
       title: Estimation sans modèle et identification paramétrique pour la commande dynamique de robots polyarticulés
       text: >
+              La robotique demande de plus en plus de flexibilité, de réactivité et cherche à rendre les robots adaptatifs. 
+              La commande sans modèle définie par M. Fliess  montre qu'une modélisation simple d'un système peut permettre 
+              la mise en place d'une commande fournissant un bon suivi de la trajectoire désirée tout en lui conférant la capacité de pallier ses défauts techniques. 
+              Cependant, oubli é un modèle dynamique connu pour un modèle dynamique simplifié (et généralement sans rapport avec la configuration du robot) 
+              entraîne une perte importante d'informations. De ce fait, il est inté ressant d'étudier la mise en œ uvre d'une combinaison entre commande 
+              avec modèle et sans modèle. L'intérêt est d'utiliser la partie sans modèle pour qualifier uniquement tous les effets inconnus du systè me 
+              (frottements, jeux,...). L'étude présentée dans ce rapport deux lois de commande basées sur la commande sans modèle et qui sont adaptées à la robotique. 
+              Elles sont développées dans l'espace articulaire et dans l'espace opérationnel dans divers types de situation 
+              (connaissance de la trajectoire, erreur sur le modèle,...). 
+              Les résultats des simulations effectuées sous Matlab/Simulink illustrent l'efficacité de ces méthodes. 
               Projet de fin d'études de l'ENSAM Paris effectué à l'ISIR.
-              Le travail s'oriente sur le contrôle de système, en utilisant du contrôle sans modèle.
-              Une analyse est effectuée sur l'intérêt de l'association de la commande sans modèle et celle avec.
       link: https://www.researchgate.net/publication/315808938_Estimation_sans_modele_et_identification_parametrique_pour_la_commande_dynamique_de_robots_polyarticules
     - date: 2013
       title: Développement d’une interface hybride à retour de force à 2 degrés de liberté
       text: >
-              Projet de fin d'études de l'INSA de Lyon effectué au CEA LIST.
               Le travail s'évertue à analyser l'impact d'un actionneur hybride (frein + moteur) dans un système haptique.
+              Projet de fin d'études de l'INSA de Lyon effectué au CEA LIST.
       link: https://www.researchgate.net/publication/278713768_Developpement_d%27une_interface_hybride_a_retour_de_force_a_2_degres_de_liberte
 
 tab2:
