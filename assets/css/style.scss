@@ -108,3 +108,10 @@ sub {
 .navbar ul {
     list-style-type: none;
 }
+
+@media screen and (max-width: 480px) {
+    #forkme_banner {
+        font-size: 0px;
+        height: 20px;
+    }
+}
