@@ -92,7 +92,7 @@ tab3:
   content:
     - date: now - 2015
       title: PhD. student in humanoid robotics (Lirmm)
-      text: Haptic covers for humanoid and safe human aware falling strategies
+      text: Humanoid fall control by postural reshaping and adaptive compliance
     - date: 2014 - 2013
       title: Master 2 in robotics (ENSAM Paris)
       text: Master in robotics « Advanced Systems and Robotics » in cohabilitation with UPMC, ENSTA and ENS Cachan
