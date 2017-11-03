@@ -7,7 +7,7 @@ title: Building Python bindings with CMake and Boost
 permalink: en/blog/boost-python-cmake-build
 ---
 
-This is a short explanation that explains how to build a boost python binding with CMake. You may or may not use [JRL CMake](https://github.com/jrl-umi3218/jrl-cmakemodules) macros or [PID](https://github.com/lirmm/pid-workspace) macros.
+This is a short explanation on how to build a boost python binding with CMake. You may or may not use [JRL CMake](https://github.com/jrl-umi3218/jrl-cmakemodules) macros or [PID](https://github.com/lirmm/pid-workspace) macros.
 <!--more-->
 
 ## The lib to bind
