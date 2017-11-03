@@ -27,7 +27,7 @@ sub {
 
 // Override inner
 .inner {
-    max-width: 800px;
+    max-width: 60%;
 }
 
 // Table for cv
@@ -96,12 +96,12 @@ sub {
 .post {
     float: left;
     text-align: justify;
-    width: 650px;
+    width: 80%;
 }
 
 .navbar {
     float: right;
-    width: 150px;
+    width: 20%;
     text-align: right;
 }
 
