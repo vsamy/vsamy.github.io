@@ -100,7 +100,7 @@ A[0, 1] = T
 A[0, 2] = T * T / 2.
 A[1, 2] = T
 
-B = np.array([T* T * T / 6., T * T / 2, T])
+B = np.array([[T* T * T / 6.], [T * T / 2.], [T]])
 
 d = np.zeros((3,))
 x_0 = np.zeros((3,))
@@ -112,8 +112,8 @@ Then we create the ZMP constraint
 ```python
 E2 = np.array([[1., 0., -h_CoM / g]])
 E1 = -E2
-f1 = np.array([[z_min]])
-f2 = np.array([[z_max]])
+f1 = np.array([z_min])
+f2 = np.array([z_max])
 
 traj_constr_1 = copra.NewTrajectoryConstraint(E1, f1)
 traj_constr_2 = copra.NewTrajectoryConstraint(E2, f2)
@@ -156,7 +156,7 @@ com_pos = np.array((nrSteps,))
 com_vel = np.array((nrSteps,))
 com_acc = np.array((nrSteps,))
 zmp_pos = np.array((nrSteps,))
-for i in xrange(nr_steps):
+for i in range(nr_steps):
     com_pos[i] = trajectory[3 * i]
     com_vel[2 * i] = trajectory[3 * i + 1]
     com_acc[2 * i] = trajectory[3 * i + 2]
