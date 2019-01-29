@@ -17,7 +17,7 @@ include: ["_pages"]
 # in the templates via {{ site.myvariable }}.
 
 title: vsamy
-email: vincent.samy@lirmm.fr
+email: vincent.samy@aist.go.jp
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  vsamy
