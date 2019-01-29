@@ -2,7 +2,11 @@
 ---
 
 @import "{{ site.theme }}";
+@import "monokai";
 
+pre, code {
+    background-color: #272822;
+}
 
 // Redifing sup and sub properly 
 sup, sub {
