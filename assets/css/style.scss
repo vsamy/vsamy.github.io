@@ -2,7 +2,12 @@
 ---
 
 @import "{{ site.theme }}";
+@import "monokai";
 
+pre, code {
+    background-color: #272822;
+    color: #f8f8f2;
+}
 
 // Redifing sup and sub properly 
 sup, sub {
@@ -19,6 +24,7 @@ sup {
 sub {
     bottom: -0.25em;
 }
+
 
 // Override ul style
 //ul {

@@ -1,20 +1,11 @@
 tab0:
   header: Current work
   content:
-    - date: since 2014
-      title: Humanoid fall control by postural reshaping and adaptive compliance
+    - date: since 2018
+      title: (Postdoc) Development of human-centric production system
       text: > 
-              This thesis deals with the problem of humanoid falling with a decoupled strategy consisting of a pre-impact and a post-impact stages. 
-              In the pre-impact stage, geometrical reasoning allows the robot to choose appropriate impact points in the surrounding environment 
-              and to adopt a posture to reach them while avoiding impact singularities and preparing for the post-impact. 
-              The post-impact stage uses a quadratic program controller (QP) that adapts on-line the joint proportional-derivative (PD) gains 
-              to make the robot compliant, i.e. to absorb post-impact dynamics, which lowers possible damage risks. 
-              We propose a new approach incorporating the stiffness and damping gains directly as decision variables in the QP 
-              along with the usually-considered variables that are the joint accelerations and contact forces. 
-              Finally, to overcome the limitations of the local QP approach, we combine the method with a Model Predictive Controller (MPC) 
-              allowing for a preview on a time-horizon based on a reduced model.
-              Several experiments on the real humanoid robot HRP-4 or in a full-dynamics simulator are presented 
-              and discussed to illustrate and validate each part of the thesis.
+              The idea is to develop a tool to monitor someone motion and warn him when he performing a motion that could
+              lead to a backache or else. For example, it shall detects if someone is lifting an heavy object without folding his knees.
 
 tab1:
   header: Publications
@@ -70,6 +61,35 @@ tab1:
       link: http://comanoid.cnrs.fr/publications_files/2015/Humanoids/T5OC-4.pdf
 
 tab2:
+  header: Education
+  content:
+    - date: 2014-2017
+      title: (Thesis) Humanoid fall control by postural reshaping and adaptive compliance
+      text: >
+              This thesis deals with the problem of humanoid falling with a decoupled strategy consisting of a pre-impact and a post-impact stages. 
+              In the pre-impact stage, geometrical reasoning allows the robot to choose appropriate impact points in the surrounding environment 
+              and to adopt a posture to reach them while avoiding impact singularities and preparing for the post-impact. 
+              The post-impact stage uses a quadratic program controller (QP) that adapts on-line the joint proportional-derivative (PD) gains 
+              to make the robot compliant, i.e. to absorb post-impact dynamics, which lowers possible damage risks. 
+              We propose a new approach incorporating the stiffness and damping gains directly as decision variables in the QP 
+              along with the usually-considered variables that are the joint accelerations and contact forces. 
+              Finally, to overcome the limitations of the local QP approach, we combine the method with a Model Predictive Controller (MPC) 
+              allowing for a preview on a time-horizon based on a reduced model.
+              Several experiments on the real humanoid robot HRP-4 or in a full-dynamics simulator are presented 
+              and discussed to illustrate and validate each part of the thesis.
+    - date: 2014 - 2013
+      title: Master 2 in robotics (ENSAM Paris)
+      text: Master in robotics « Advanced Systems and Robotics » in cohabilitation with UPMC, ENSTA and ENS Cachan
+    - date: 2013 - 2008
+      title: Engineering degree « Design and Mechanical Engineering » (INSA Lyon)
+      text: > 
+              Mechanical & Design deparment.
+              Integrated preparatory class – section « ASINSA » which is linked with Asian culture.
+    - date: 2012 - 2011
+      title: Exchange year (神戸大学)
+      text: Done at the mechanical department of Kobe university.
+
+tab3:
   header: Diverse experiences
   content:
     - date: 2012
@@ -86,21 +106,3 @@ tab2:
       text: > 
               Learning the job of a worker at Iwata, Shizuoka prefecture, Japan.
               Packaging & quality control for 1 month.
-
-tab3:
-  header: Education
-  content:
-    - date: now - 2015
-      title: PhD. student in humanoid robotics (Lirmm)
-      text: Humanoid fall control by postural reshaping and adaptive compliance
-    - date: 2014 - 2013
-      title: Master 2 in robotics (ENSAM Paris)
-      text: Master in robotics « Advanced Systems and Robotics » in cohabilitation with UPMC, ENSTA and ENS Cachan
-    - date: 2013 - 2008
-      title: Engineering degree « Design and Mechanical Engineering » (INSA Lyon)
-      text: > 
-              Mechanical & Design deparment.
-              Integrated preparatory class – section « ASINSA » which is linked with Asian culture.
-    - date: 2012 - 2011
-      title: Exchange year (神戸大学)
-      text: Done at the mechanical department of Kobe university.
