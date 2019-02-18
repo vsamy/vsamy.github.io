@@ -26,7 +26,7 @@ Le code:
 
 ```c++
 template <typename... Attributes>
-class ShareData {
+class SharedData {
     static_assert(!internal::has_duplicate_type_v<Attributes...>, "All type should be different.");
     static_assert(internal::are_all_copy_assignable_v<Attributes...>, "One of the type is not copy-assignable.");
     static_assert(!internal::is_any_pointer_v<Attributes...>, "Pointers should not be copied here");
@@ -60,7 +60,7 @@ private:
     template <typename T, typename... Args>
     void setData(T&& data, Args&&... args) noexcept(std::is_nothrow_copy_assignable_v<T>)
     {
-        std::get<std::decay_t<T>(m_values) = std::move(data);
+        std::get<std::decay_t<T>>(m_values) = std::move(data);
         setData(std::forward<Args>(args)...);
     }
 
@@ -129,6 +129,7 @@ struct StrongType2 : std::vector<int> {
 ```
 
 Il est évident que le nom de ces variables laisse à désirer :)
+Pour plus de détails, je recommende de lire le [blog](https://www.fluentcpp.com/2016/12/08/strong-types-for-strong-interfaces/) de Jonathan Boccara.
 
 ## Fonctionnement
 
