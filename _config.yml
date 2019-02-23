@@ -25,6 +25,9 @@ github_username:  vsamy
 # For handling post excerpt
 excerpt_separator: <!--more-->
 
+# For deleting data in urls
+permalink: /:categories/:title/
+
 # Build settings
 markdown: kramdown 
 theme: jekyll-theme-slate
@@ -50,7 +53,7 @@ menu-lang:
       url: "en/blog"
     repo:
       name: Git repositories
-      url: "en/git-repositories"
+      url: "en/repo"
   fr:
     home:
       name: Accueil
@@ -63,4 +66,4 @@ menu-lang:
       url: "fr/blog"
     repo:
       name: Dépôts git
-      url: "fr/git-repositories"
+      url: "fr/repo"
