@@ -11,6 +11,15 @@ tab1:
   header: Publications
   content:
     - date: 2018
+      title: Real-time musculoskeletal visualization of muscle tension and joint reaction forces
+      text: >
+              This paper presents a novel software that visualizes the physical burden of human body during movements.
+              Its main objective is to support factory workers by monitoring the risk of physical health problems like low back pains.
+              To achieve the goal, the software utilizes wearable sensors like IMUs to realize the measurement at a work-site.
+              Several physical information like joint angles, joint torques, muscle tensions, joint reaction forces can be obtained by real-time musculoskeletal computation.
+              The musculoskeletal information can be plotted and recorded by the visualization interface which is integrated to an ergonomic assessment software DhaibaWorks. 
+      link: https://hal.archives-ouvertes.fr/hal-02311482v1
+    - date: 2018
       title: Active shock absorber control in humanoid robot falls with nonlinear optimization on a reduced dynamics model
       text: >
               We propose a reduced-model-based analytic approach to active shock absorption by a falling humanoid robot at impact. 

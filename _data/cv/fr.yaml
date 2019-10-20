@@ -1,24 +1,25 @@
 tab0:
-  header: Travail actuel
+  header: Position actuelle
   content:
-    - date: depuis 2014
-      title: Commande de chute pour robots humanoïdes par reconfiguration posturale et compliance adaptative
+    - date: depuis 2018
+      title: (Postdoc) Development of human-centric production system
       text: > 
-              Cette thèse traite du problème de la chute de robots humanoïdes.
-              L'étude consiste à découpler la stratégie de chute en une phase de pré-impact et une phase de post-impact.
-              Dans la première, une solution géométrique permet au robot de choisir des points d'impact dans un environnement encombré. 
-              Le robot réadapte sa posture tout en évitant les singularités de chute et en préparant le seconde phase. 
-              La phase de post-impact utilise une commande par Programmation Quadratique (QP) qui permet d'adapter 
-              les gains Proportionnels-Dérivés (PD) des moteurs en ligne, afin d'atteindre une compliance dans les articulations et amortir activement le choc.
-              L'approche consiste à incorporer les gains de raideur et d'amortissement dans le vecteur d'optimisation du QP 
-              avec les variables habituelles que sont l'accélération articulaire et les forces de contact. 
-              Enfin, pour compléter cette approche locale et en augmenter les performances, une commande de modèle prédictif 
-              sur un modèle simplifié du robot et son évolution sur une fenêtre glissante de temps est incorporée à la méthode.
-              Plusieurs expériences et simulations sont présentées pour valider les différentes parties de cette thèse.    
+              Développement d'un logiciel pour la prévention de douleurs musculaires dues un effort physique.
+              Plus particulièrement, c'est un outil visant à minimiser les douleurs lombaires des ouvriers dans les usines.
+              Les méthodes utilisées sont non-intrusives et doivent maximiser le confort de ces personnes.
 
 tab1:
   header: Articles
   content:
+    - date: 2018
+      title: Real-time musculoskeletal visualization of muscle tension and joint reaction forces
+      text: >
+              This paper presents a novel software that visualizes the physical burden of human body during movements.
+              Its main objective is to support factory workers by monitoring the risk of physical health problems like low back pains.
+              To achieve the goal, the software utilizes wearable sensors like IMUs to realize the measurement at a work-site.
+              Several physical information like joint angles, joint torques, muscle tensions, joint reaction forces can be obtained by real-time musculoskeletal computation.
+              The musculoskeletal information can be plotted and recorded by the visualization interface which is integrated to an ergonomic assessment software DhaibaWorks. 
+      link: https://hal.archives-ouvertes.fr/hal-02311482v1
     - date: 2018
       title: Active shock absorber control in humanoid robot falls with nonlinear optimization on a reduced dynamics model
       text: >
