@@ -10,7 +10,7 @@ tab0:
 tab1:
   header: Publications
   content:
-    - date: 2018
+    - date: 2019
       title: Real-time musculoskeletal visualization of muscle tension and joint reaction forces
       text: >
               This paper presents a novel software that visualizes the physical burden of human body during movements.
