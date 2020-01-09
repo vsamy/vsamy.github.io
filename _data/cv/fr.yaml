@@ -11,6 +11,25 @@ tab0:
 tab1:
   header: Articles
   content:
+    - date: 2020
+      title: Fusion of Multiple Motion Capture Systems for Musculoskeletal Analysis
+      text: >
+              An accurate and convenient method of measuring human movements is essential for human motion analysis.
+              In recent days, several types of motion capture system became available. Since each measurement technology has both
+              merits and demerits, their suitable choice depends on each application or varying situations. Therefore, it is important
+              that the motion analysis software should flexibly select and be connected to several measurement systems simultaneously
+              according to target applications. This paper presents a software designed to manage different motion capture systems and to
+              perform the musculoskeletal analysis. It allow us not only to get data from different systems but also give us the capability
+              of synchronizing/merging their data.
+    - date: 2019
+      title: Musculoskeletal Estimation Using Inertial Measurement Units and Single Video Image
+      text: >
+              We address the problem of estimating the physical burden of a human body. This translates to monitor and
+              estimate muscle tension and joint reaction forces of a musculoskeletal
+              model in real-time. The system should minimize the discomfort generating by any sensors that needs to be fixed
+              on the user. Our system combines a 3D pose estimation from vision and IMU sensors. We aim to minimize the number of
+              IMU fixed to the subject while compensating the remaining lack of information with vision.
+      link: https://hal.archives-ouvertes.fr/hal-02311483v2
     - date: 2019
       title: Real-time musculoskeletal visualization of muscle tension and joint reaction forces
       text: >
@@ -21,18 +40,17 @@ tab1:
               The musculoskeletal information can be plotted and recorded by the visualization interface which is integrated to an ergonomic assessment software DhaibaWorks. 
       link: https://hal.archives-ouvertes.fr/hal-02311482v1
     - date: 2018
-      title: Active shock absorber control in humanoid robot falls with nonlinear optimization on a reduced dynamics model
+      title: Analysis of a simple model for post-impact dynamics active compliance in humanoids falls with nonlinear optimization
       text: >
-              We propose a reduced-model-based analytic approach to active shock absorption by a falling humanoid robot at impact. 
-              We model the segment between the contact point at impact and the impacting limb extremity attached to the torso or waist of the humanoid robot 
-              as a one degree-of-freedom linear mass-spring-damper system. 
-              By mapping the joint angle limits and torque limits of the joints in the impacting limb to a corresponding position limit and force limit in the reduced model, 
-              we formulate a nonlinear optimization problem to find an admissible pair of parameters of the reduced model (stiffness, damping) 
-              that prevents the model from violating the constraints before reaching a steady state rest. 
-              The nonlinear constraints are analytically derived using symbolic computation tools 
-              and then numerically solved with off-the-shelf nonlinear optimization solver. 
-              The reduced model trajectories are then mapped back on the full body of the humanoid robot and illustrated on the HRP-4 robot in simulation. Submitted to ICRA 2018.
-      link: https://hal.archives-ouvertes.fr/hal-01590677/document
+              We analyse a mass-spring-damper model as an active compliance steering controller to adaptively comply with post-impact dynamics
+              in humanoid falls. We use it as a one degree of freedom virtual link that can be attached between a point at impact and
+              a given limb point (e.g. torso or waist of the humanoid). By mapping position and torque limits of the robot joints
+              into corresponding position and force limits in the virtual link, we formulate a nonlinear optimization problem to ﬁnd
+              its admissible stiffness and damping that prevents violating the constraints before reaching a steady state rest.
+              The nonlinear constraints are analytically derived using symbolic computation and then numerically solved
+              with off-the-shelf nonlinear optimization solver. The virtual model trajectories are then mapped back on the full body
+              of the humanoid robot and illustrated on the HRP-4 robot in simulation. 
+      link: http://www.comanoid.cnrs.fr/publications_files/2018/samy-simpar-2018.pdf
     - date: 2017
       title: Post-Impact Adaptive Compliance for Humanoid Falls Using Predictive Control of a Reduced Model 
       text: >
