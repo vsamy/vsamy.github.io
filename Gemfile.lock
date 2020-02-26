@@ -206,9 +206,9 @@ GEM
       jekyll-seo-tag (~> 2.1)
     minitest (5.13.0)
     multipart-post (2.1.1)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.7-x64-mingw32)
+    nokogiri (1.10.8-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     octokit (4.15.0)
       faraday (>= 0.9)
@@ -241,7 +241,6 @@ GEM
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.0)
-    wdm (0.1.1)
     zeitwerk (2.2.2)
 
 PLATFORMS
@@ -253,7 +252,6 @@ DEPENDENCIES
   jekyll-redirect-from
   jekyll-theme-slate
   redcarpet
-  wdm (>= 0.1.0)
 
 BUNDLED WITH
    1.17.3
