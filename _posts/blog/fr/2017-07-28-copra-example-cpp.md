@@ -125,8 +125,8 @@ Eigen::<double, 1, 1> f1, f2;
 f1 << z_min; 
 f2 << z_max;
 
-TrajConstr1 = std::make_shared<copra::TrajectoryConstraint>(E1, f1);
-TrajConstr2 = std::make_shared<copra::TrajectoryConstraint>(E2, f2);
+auto TrajConstr1 = std::make_shared<copra::TrajectoryConstraint>(E1, f1);
+auto TrajConstr2 = std::make_shared<copra::TrajectoryConstraint>(E2, f2);
 ```
 
 On construit les fonctions coût
@@ -135,16 +135,16 @@ On construit les fonctions coût
 Eigen::<double, 1, 3> M;
 M << 1, 0, -h_CoM / g;
 
-trajCost = std::make_shared<copra::TrajectoryCost>(M, -z_ref);
-trajCost->weight(Q);
+auto trajCost = std::make_shared<copra::TrajectoryCost>(M, -z_ref);
+trajCost->weights(Q);
 trajCost->autoSpan(); // Make the dimension consistent (z_ref size is nrSteps)
 
 Eigen::<double, 1, 1> N, p;
 N << 1;
 p << 0;
 
-controlCost = std::make_shared<copra::ControlCost>(N, -p);
-controlCost->weight(R);
+auto controlCost = std::make_shared<copra::ControlCost>(N, -p);
+controlCost->weights(R);
 ```
 
 On peut alors créer le copra et résoudre
