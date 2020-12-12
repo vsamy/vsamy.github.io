@@ -26,7 +26,9 @@ github_username:  vsamy
 excerpt_separator: <!--more-->
 
 # Build settings
-markdown: kramdown 
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
 theme: jekyll-theme-slate
 plugins:
   - github-pages

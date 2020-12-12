@@ -119,10 +119,10 @@ auto ps = std::make_shared<copra::PreviewSystem>(A, B, d, x_0, nrStep);
 Then we create the ZMP constraint 
 
 ```c++
-Eigen::<double, 1, 3> E1, E2;
+Eigen::Matrix<double, 1, 3> E1, E2;
 E2 << 1, 0, h_CoM / g;
 E1 = -E2;
-Eigen::<double, 1, 1> f1, f2;
+Eigen::Matrix<double, 1, 1> f1, f2;
 f1 << z_min; 
 f2 << z_max;
 
@@ -133,14 +133,14 @@ auto TrajConstr2 = std::make_shared<copra::TrajectoryConstraint>(E2, f2);
 Build the cost function
 
 ```c++
-Eigen::<double, 1, 3> M;
+Eigen::Matrix<double, 1, 3> M;
 M << 1, 0, -h_CoM / g;
 
 auto trajCost = std::make_shared<copra::TrajectoryCost>(M, -z_ref);
 trajCost->weights(Q);
 trajCost->autoSpan(); // Make the dimension consistent (z_ref size is nrSteps)
 
-Eigen::<double, 1, 1> N, p;
+Eigen::Matrix<double, 1, 1> N, p;
 N << 1;
 p << 0;
 
