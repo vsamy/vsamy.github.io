@@ -7,7 +7,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     coffee-script (2.4.1)
       coffee-script-source
@@ -198,8 +198,6 @@ GEM
       gemoji (~> 3.0)
       html-pipeline (~> 2.2)
       jekyll (>= 3.0, < 5.0)
-    katex (0.6.1)
-      execjs (~> 2.7)
     kramdown (2.3.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -260,7 +258,6 @@ GEM
     unf_ext (0.0.7.7)
     unf_ext (0.0.7.7-x64-mingw32)
     unicode-display_width (1.7.0)
-    wdm (0.1.1)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -271,8 +268,6 @@ DEPENDENCIES
   github-pages
   jekyll-redirect-from
   jekyll-theme-slate
-  katex
-  wdm (>= 0.1.0)
 
 BUNDLED WITH
    2.2.14
